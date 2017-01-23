@@ -2,6 +2,7 @@ package org.usfirst.frc.team5010.robot;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Victor;
@@ -28,4 +29,5 @@ public class RobotMap {
 	
 	public static Gyro gyro = new ADXRS450_Gyro();
 	public static AnalogInput distance = new AnalogInput(0);
+	public static DoubleSolenoid solenoid = new DoubleSolenoid(1, 2);
 }
