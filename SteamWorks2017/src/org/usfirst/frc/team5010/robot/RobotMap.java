@@ -25,7 +25,7 @@ public class RobotMap {
 	// public static int rangefinderPort = 1;
 	// public static int rangefinderModule = 1;
 	public static SpeedController driveMotorLeft = new Spark(0);
-	public static SpeedController driveMotorRight = new Victor(1);
+	public static SpeedController driveMotorRight = new Spark(1);
 	
 	public static Gyro gyro = new ADXRS450_Gyro();
 	public static AnalogInput distance = new AnalogInput(0);
