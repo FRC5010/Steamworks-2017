@@ -26,6 +26,8 @@ public class TankDrive extends Command {
     	leftInputPower = Robot.oi.joy.getRawAxis(1);
     	rightInputPower = Robot.oi.joy.getRawAxis(5);
     	
+    	// TODO: Add code which checks the ultrasound from a subsystem to stop robot from crashing
+    	// TODO: Add code which scales the joystick inputs to a power curve along with a deadzone
     	Robot.drivetrain.drive(leftInputPower, rightInputPower);
     }
 
@@ -36,7 +38,7 @@ public class TankDrive extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.drivetrain.drive(0,0);
+    	Robot.drivetrain.stop();
     }
 
     // Called when another command which requires one or more of the same
