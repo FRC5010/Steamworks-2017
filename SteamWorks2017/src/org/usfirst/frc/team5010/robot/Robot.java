@@ -5,6 +5,7 @@ import org.usfirst.frc.team5010.robot.subsystems.DriveTrainMain;
 import org.usfirst.frc.team5010.robot.subsystems.GearHolder;
 
 import edu.wpi.first.wpilibj.CameraServer;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -22,6 +23,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Robot extends IterativeRobot {
 	public static final DriveTrainMain drivetrain = new DriveTrainMain();
 	public static final GearHolder gearHolder = new GearHolder();
+	public static final Encoder encoder = new Encoder(0, 1, false);
 	public static OI oi;
 	private CameraServer camera; 
 
@@ -34,6 +36,13 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void robotInit() {
+		SmartDashboard.putNumber("D", 0.1);
+		SmartDashboard.putNumber("I", 0.7);
+		SmartDashboard.putNumber("P", 1);
+		SmartDashboard.putNumber("Final Angle", 90);
+		SmartDashboard.putNumber("tolerance", 1);
+		SmartDashboard.putString("Tolerance Buffer", "5");
+		SmartDashboard.putNumber("final distance", 15);
 		oi = new OI();
 		//chooser.addDefault("Default Auto", new ExampleCommand());
 		// chooser.addObject("My Auto", new MyAutoCommand());

@@ -1,13 +1,14 @@
 package org.usfirst.frc.team5010.robot.subsystems;
 
-import edu.wpi.first.wpilibj.DoubleSolenoid;
+//import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
  *
  */
 public class GearHolder extends Subsystem {
-	DoubleSolenoid GearHolderPiston = null;
+	// TODO uncomment GearHolderPiston code when Pneumatic Control available.
+	//DoubleSolenoid GearHolderPiston = null;
 	
 	public GearHolder(){
 		//GearHolderPiston = new DoubleSolenoid(1, 2);

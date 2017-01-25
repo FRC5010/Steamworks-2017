@@ -3,12 +3,8 @@ package org.usfirst.frc.team5010.robot.subsystems;
 import org.usfirst.frc.team5010.robot.RobotMap;
 import org.usfirst.frc.team5010.robot.commands.TankDrive;
 
-import com.ni.vision.NIVision.LegFeature;
-
-import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.interfaces.Gyro;
 
 /**
  *

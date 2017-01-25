@@ -13,11 +13,11 @@ public class ExtendGearHolder extends Command {
 
 		super("GearHolder");
 
-		//requires(Robot.gearHolder);
+		requires(Robot.gearHolder);
 	}
 
 	protected void initialize() {
-		//this.gearHolder = Robot.gearHolder;
+		this.gearHolder = Robot.gearHolder;
 	}
 
 	// Called repeatedly when this Command is scheduled to run
