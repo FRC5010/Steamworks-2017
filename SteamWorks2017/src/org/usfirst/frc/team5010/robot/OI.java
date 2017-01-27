@@ -1,6 +1,8 @@
 package org.usfirst.frc.team5010.robot;
 
 import org.usfirst.frc.team5010.robot.commands.DriveForwardUntilDistance;
+import org.usfirst.frc.team5010.robot.commands.ExtendGearHolder;
+import org.usfirst.frc.team5010.robot.commands.RetractGearHolder;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -39,10 +41,17 @@ public class OI {
 	// until it is finished as determined by it's isFinished method.
 	// button.whenReleased(new ExampleCommand());
 	public Joystick joy = new Joystick(0);
-	Button button = new JoystickButton(joy, 1);
-	public OI () {
-		button.whenReleased(new DriveForwardUntilDistance());
-	}
+	private Button buttonB = new JoystickButton(joy, 1);
+	private Button buttonA = new JoystickButton(joy, 0);
 	
+	/**
+	 * Default constructor.
+	 */
+	public OI () {
+		buttonB.whenReleased(new DriveForwardUntilDistance());
+	
+		buttonA.whenPressed(new RetractGearHolder());
+		buttonA.whenReleased(new ExtendGearHolder());
+	}
 	
 }
