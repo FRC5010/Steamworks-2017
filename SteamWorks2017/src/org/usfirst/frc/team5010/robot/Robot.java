@@ -23,7 +23,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Robot extends IterativeRobot {
 	public static final DriveTrainMain drivetrain = new DriveTrainMain();
 	public static final GearHolder gearHolder = new GearHolder();
-	public static final Encoders encoder = new Encoders();
+	//TODO Uncomment below line when encoder available.
+	//public static final Encoders encoder = new Encoders();
+
 	public static OI oi;
 	private CameraServer camera; 
 
