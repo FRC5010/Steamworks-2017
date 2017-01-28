@@ -20,5 +20,14 @@ public class BallIntake extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
+    
+    public void gatherBallToTank() {
+    	System.out.println("Temporary notification of gathering ball into tank.");
+    }
+    
+    public void reverseBallOut() {
+    	System.out.println("Temporary notification of reversing ball out.");
+    }
+
 }
 

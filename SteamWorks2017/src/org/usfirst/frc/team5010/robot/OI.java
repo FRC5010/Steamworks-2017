@@ -3,6 +3,8 @@ package org.usfirst.frc.team5010.robot;
 import org.usfirst.frc.team5010.robot.commands.DriveForwardUntilDistance;
 import org.usfirst.frc.team5010.robot.commands.ExtendGearHolder;
 import org.usfirst.frc.team5010.robot.commands.RetractGearHolder;
+import org.usfirst.frc.team5010.robot.commands.ShootHighGoalBall;
+import org.usfirst.frc.team5010.robot.commands.ShootLowGoalBall;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -41,8 +43,11 @@ public class OI {
 	// until it is finished as determined by it's isFinished method.
 	// button.whenReleased(new ExampleCommand());
 	public Joystick joy = new Joystick(0);
-	private Button buttonB = new JoystickButton(joy, 1);
-	private Button buttonA = new JoystickButton(joy, 0);
+	
+	private Button buttonB = new JoystickButton(joy, 2);
+	private Button buttonA = new JoystickButton(joy, 1);
+	private Button buttonX = new JoystickButton(joy, 3);
+	private Button buttonY = new JoystickButton(joy, 4);
 	
 	/**
 	 * Default constructor.
@@ -50,8 +55,12 @@ public class OI {
 	public OI () {
 		buttonB.whenReleased(new DriveForwardUntilDistance());
 	
-		buttonA.whenPressed(new RetractGearHolder());
-		buttonA.whenReleased(new ExtendGearHolder());
+		buttonA.whenPressed(new ExtendGearHolder());
+		buttonA.whenReleased(new RetractGearHolder());
+
+		buttonX.whenPressed(new ShootLowGoalBall());
+		buttonY.whenPressed(new ShootHighGoalBall());
+
 	}
 	
 }

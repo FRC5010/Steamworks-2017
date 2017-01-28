@@ -20,5 +20,13 @@ public class BallShooter extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
+    
+    public void shootBallHigh() {
+    	System.out.println("Temporary notification of shooting ball high.");
+    }
+    
+    public void shootBallLow() {
+    	System.out.println("Temporary notification of shooting ball low.");
+    }
 }
 

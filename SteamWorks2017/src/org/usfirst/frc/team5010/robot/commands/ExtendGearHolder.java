@@ -5,10 +5,18 @@ import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team5010.robot.Robot;
 import org.usfirst.frc.team5010.robot.subsystems.GearHolder;
 
+/**
+ * 
+ * @author Juan 
+ * @since January 28, 2016
+ */
 public class ExtendGearHolder extends Command {
 
 	GearHolder gearHolder = null;
 
+	/**
+	 * Default Constructor.
+	 */
 	public ExtendGearHolder() {
 
 		super("GearHolder");
@@ -22,13 +30,12 @@ public class ExtendGearHolder extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-
 		gearHolder.extendGearHolder();
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		return false;
+		return true;
 	}
 
 	// Called once after isFinished returns true
