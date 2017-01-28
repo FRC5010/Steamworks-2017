@@ -10,9 +10,8 @@ import edu.wpi.first.wpilibj.command.Command;
 public class DriveForDistance extends Command {
 
     public DriveForDistance() {
-    	requires(Robot.encoder);
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+    	//TODO uncomment line below when encoder available.
+    	//requires(Robot.encoder);
     }
 
     // Called just before this Command runs the first time
