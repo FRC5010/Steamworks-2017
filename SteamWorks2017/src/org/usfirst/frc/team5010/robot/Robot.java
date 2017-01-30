@@ -21,7 +21,6 @@ public class Robot extends IterativeRobot {
 	//public static final Encoders encoder = new Encoders();
 
 	public static OI oi;
-	private CameraServer camera; 
 
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
@@ -37,11 +36,8 @@ public class Robot extends IterativeRobot {
 		//chooser.addDefault("Default Auto", new ExampleCommand());
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
-
-		// Initialize the camera.
-		camera = CameraServer.getInstance();
-		camera.startAutomaticCapture(1);
-		camera.startAutomaticCapture(0);
+		
+		RobotMap.vision.startVision();
 	}
 
 	/**

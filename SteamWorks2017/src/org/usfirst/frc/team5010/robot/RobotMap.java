@@ -2,12 +2,14 @@ package org.usfirst.frc.team5010.robot;
 
 import org.usfirst.frc.team5010.robot.subsystems.DirectionSensor;
 import org.usfirst.frc.team5010.robot.subsystems.DistanceSensor;
-import org.usfirst.frc.team5010.robot.subsystems.RangeSensor;
 import org.usfirst.frc.team5010.robot.subsystems.DriveTrainMain;
 import org.usfirst.frc.team5010.robot.subsystems.GearHolder;
+import org.usfirst.frc.team5010.robot.subsystems.RangeSensor;
+import org.usfirst.frc.team5010.robot.subsystems.Vision;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Spark;
@@ -44,10 +46,12 @@ public class RobotMap {
 
 	public static final Encoder rightEncoder = new Encoder(0, 1);
 	public static final Encoder leftEncoder = new Encoder(2, 3);
+	public static final CameraServer camera = CameraServer.getInstance(); 
 
 	public static final DriveTrainMain drivetrain = new DriveTrainMain();
 	public static final GearHolder gearHolder = new GearHolder();
 	public static final DirectionSensor direction = new DirectionSensor();
 	public static final RangeSensor range = new RangeSensor();
 	public static final DistanceSensor distance = new DistanceSensor();
+	public static final Vision vision = new Vision();
 }
