@@ -1,5 +1,6 @@
 package org.usfirst.frc.team5010.robot;
 
+import org.usfirst.frc.team5010.robot.subsystems.BallIntake;
 import org.usfirst.frc.team5010.robot.subsystems.DirectionSensor;
 import org.usfirst.frc.team5010.robot.subsystems.DistanceSensor;
 import org.usfirst.frc.team5010.robot.subsystems.DriveTrainMain;
@@ -50,6 +51,7 @@ public class RobotMap {
 
 	public static final DriveTrainMain drivetrain = new DriveTrainMain();
 	public static final GearHolder gearHolder = new GearHolder();
+	public static final BallIntake ballIntake = new BallIntake();
 	public static final DirectionSensor direction = new DirectionSensor();
 	public static final RangeSensor range = new RangeSensor();
 	public static final DistanceSensor distance = new DistanceSensor();
