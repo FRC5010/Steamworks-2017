@@ -1,9 +1,9 @@
 package org.usfirst.frc.team5010.robot.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
-
-import org.usfirst.frc.team5010.robot.Robot;
+import org.usfirst.frc.team5010.robot.RobotMap;
 import org.usfirst.frc.team5010.robot.subsystems.GearHolder;
+
+import edu.wpi.first.wpilibj.command.Command;
 
 /**
  * 
@@ -21,11 +21,11 @@ public class ExtendGearHolder extends Command {
 
 		super("GearHolder");
 
-		requires(Robot.gearHolder);
+		requires(RobotMap.gearHolder);
 	}
 
 	protected void initialize() {
-		this.gearHolder = Robot.gearHolder;
+		this.gearHolder = RobotMap.gearHolder;
 	}
 
 	// Called repeatedly when this Command is scheduled to run

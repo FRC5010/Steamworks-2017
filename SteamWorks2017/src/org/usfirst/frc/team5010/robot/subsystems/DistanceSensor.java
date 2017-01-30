@@ -9,12 +9,14 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  *
  */
-public class Encoders extends Subsystem {
+public class DistanceSensor extends Subsystem {
 
-	Encoder rightEncoder = RobotMap.rightEncoder;
-	Encoder leftEncoder = RobotMap.leftEncoder;
+	private final Encoder rightEncoder;
+	private final Encoder leftEncoder;
 	
-	public Encoders(){
+	public DistanceSensor(){
+		rightEncoder = RobotMap.rightEncoder;
+		leftEncoder = RobotMap.leftEncoder;
 		reset();
 		rightEncoder.setDistancePerPulse(SmartDashboard.getNumber("distance per pulse", 10));
 		leftEncoder.setDistancePerPulse(SmartDashboard.getNumber("distance per pulse", 10));

@@ -1,5 +1,11 @@
 package org.usfirst.frc.team5010.robot;
 
+import org.usfirst.frc.team5010.robot.subsystems.DirectionSensor;
+import org.usfirst.frc.team5010.robot.subsystems.DistanceSensor;
+import org.usfirst.frc.team5010.robot.subsystems.RangeSensor;
+import org.usfirst.frc.team5010.robot.subsystems.DriveTrainMain;
+import org.usfirst.frc.team5010.robot.subsystems.GearHolder;
+
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
@@ -29,14 +35,19 @@ public class RobotMap {
 		SmartDashboard.putNumber("distance per pulse", 1.5 * Math.PI);
 	}
 
-	public static SpeedController driveMotorLeft = new Spark(0);
-	public static SpeedController driveMotorRight = new Spark(1);
+	public static final SpeedController driveMotorLeft = new Spark(0);
+	public static final SpeedController driveMotorRight = new Spark(1);
 
-	public static Gyro gyro = new ADXRS450_Gyro();
-	public static AnalogInput distance = new AnalogInput(0);
-	public static DoubleSolenoid solenoid = new DoubleSolenoid(1, 2);
+	public static final Gyro gyro = new ADXRS450_Gyro();
+	public static final AnalogInput ultrasound = new AnalogInput(0);
+	public static final DoubleSolenoid solenoid = new DoubleSolenoid(1, 2);
 
-	public static Encoder rightEncoder = new Encoder(0, 1);
-	public static Encoder leftEncoder = new Encoder(2, 3);
+	public static final Encoder rightEncoder = new Encoder(0, 1);
+	public static final Encoder leftEncoder = new Encoder(2, 3);
 
+	public static final DriveTrainMain drivetrain = new DriveTrainMain();
+	public static final GearHolder gearHolder = new GearHolder();
+	public static final DirectionSensor direction = new DirectionSensor();
+	public static final RangeSensor range = new RangeSensor();
+	public static final DistanceSensor distance = new DistanceSensor();
 }

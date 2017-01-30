@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class RangeSensor extends Subsystem {
-	public AnalogInput ultrasound;
+	public final AnalogInput ultrasound;
 	
 	public RangeSensor() {
 		this.ultrasound = RobotMap.ultrasound;

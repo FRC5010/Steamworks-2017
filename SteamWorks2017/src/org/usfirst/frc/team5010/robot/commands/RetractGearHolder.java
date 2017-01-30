@@ -1,6 +1,6 @@
 package org.usfirst.frc.team5010.robot.commands;
 
-import org.usfirst.frc.team5010.robot.Robot;
+import org.usfirst.frc.team5010.robot.RobotMap;
 import org.usfirst.frc.team5010.robot.subsystems.GearHolder;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -16,12 +16,12 @@ public class RetractGearHolder extends Command {
 	 * Default constructor.
 	 */
 	public RetractGearHolder() {
-    	requires(Robot.gearHolder);
+    	requires(RobotMap.gearHolder);
     }
 	
     // Called just before this Command runs the first time
     protected void initialize() {
-    	this.gearHolder = Robot.gearHolder;
+    	this.gearHolder = RobotMap.gearHolder;
     }
 
     // Called repeatedly when this Command is scheduled to run
