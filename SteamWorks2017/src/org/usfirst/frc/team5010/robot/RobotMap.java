@@ -33,7 +33,7 @@ public class RobotMap {
 		SmartDashboard.putNumber("tolerance", 1);
 		SmartDashboard.putString("Tolerance Buffer", "5");
 		SmartDashboard.putNumber("final distance", 15);
-
+		SmartDashboard.putNumber("angle", RobotMap.direction.angle());
 		SmartDashboard.putNumber("distance per pulse", 1.5 * Math.PI);
 	}
 

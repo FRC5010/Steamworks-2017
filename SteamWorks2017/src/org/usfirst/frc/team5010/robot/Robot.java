@@ -1,7 +1,9 @@
 
 package org.usfirst.frc.team5010.robot;
 
-import edu.wpi.first.wpilibj.CameraServer;
+import org.usfirst.frc.team5010.robot.commands.TurnAndDrive;
+import org.usfirst.frc.team5010.robot.commands.TurnToAngle;
+
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -33,11 +35,11 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		RobotMap.smartDashboard();
 		oi = new OI();
-		//chooser.addDefault("Default Auto", new ExampleCommand());
-		// chooser.addObject("My Auto", new MyAutoCommand());
+		chooser.addDefault("Default Auto", new TurnAndDrive());
+		//chooser.addObject("My Auto", new TurnToAngle());
 		SmartDashboard.putData("Auto mode", chooser);
 		
-		RobotMap.vision.startVision();
+//		RobotMap.vision.startVision();
 	}
 
 	/**

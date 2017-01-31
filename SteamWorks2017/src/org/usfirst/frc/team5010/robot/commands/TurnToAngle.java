@@ -25,6 +25,7 @@ public class TurnToAngle extends PIDCommand {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	RobotMap.direction.reset();
     	setSetpoint(SmartDashboard.getNumber("Final Angle", 0));
     	
     }

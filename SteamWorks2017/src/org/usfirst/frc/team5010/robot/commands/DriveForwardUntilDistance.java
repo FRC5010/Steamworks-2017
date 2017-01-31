@@ -63,8 +63,8 @@ public class DriveForwardUntilDistance extends PIDCommand {
 	protected void usePIDOutput(double output) {
 		SmartDashboard.putNumber("output", output);
 		// TODO: Check the gyro from a subsystem and adjust the output to the drive system to keep the robot straight
-			double leftOutput = output - (currentAngle / 180);
-			double rightOutput = output + (currentAngle / 180);
+			double leftOutput = .5 * output; //- (currentAngle / 180);
+			double rightOutput = .5 * output; //+ (currentAngle / 180);
 			RobotMap.drivetrain.drive(leftOutput, rightOutput);
 	}
 }
