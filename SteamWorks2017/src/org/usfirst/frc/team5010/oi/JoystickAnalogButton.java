@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj.buttons.Button;
 
 /**
  * This class allows you to trigger commands from an analog input on
- * a joystick (sich as the triggers - Axis 3). 
+ * a joystick (such as the triggers - Axis 3). 
  * 
  * 
  * The following example code placed in OI class turns axis 3 into two buttons:
