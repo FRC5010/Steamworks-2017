@@ -1,7 +1,10 @@
 package org.usfirst.frc.team5010.robot;
 
+import org.usfirst.frc.team5010.oi.JoystickAnalogButton;
 import org.usfirst.frc.team5010.robot.commands.DriveForwardUntilDistance;
+import org.usfirst.frc.team5010.robot.commands.EmptyBallIntake;
 import org.usfirst.frc.team5010.robot.commands.ExtendGearHolder;
+import org.usfirst.frc.team5010.robot.commands.LoadBallIntake;
 import org.usfirst.frc.team5010.robot.commands.RetractGearHolder;
 import org.usfirst.frc.team5010.robot.commands.ShootHighGoalBall;
 import org.usfirst.frc.team5010.robot.commands.ShootLowGoalBall;
@@ -49,6 +52,9 @@ public class OI {
 	private Button buttonX = new JoystickButton(joy, 3);
 	private Button buttonY = new JoystickButton(joy, 4);
 	
+	private JoystickAnalogButton lefttrigger = new JoystickAnalogButton(joy, 3);
+	private JoystickAnalogButton righttrigger = new JoystickAnalogButton(joy, 4);
+	
 	/**
 	 * Default constructor.
 	 */
@@ -61,6 +67,9 @@ public class OI {
 		buttonX.whenPressed(new ShootLowGoalBall());
 		buttonY.whenPressed(new ShootHighGoalBall());
 
+		righttrigger.whenPressed(new LoadBallIntake());
+		lefttrigger.whenPressed(new EmptyBallIntake());
+		
 	}
 	
 }
