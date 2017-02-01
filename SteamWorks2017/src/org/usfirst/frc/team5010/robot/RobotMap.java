@@ -2,7 +2,6 @@ package org.usfirst.frc.team5010.robot;
 
 import org.usfirst.frc.team5010.robot.subsystems.BallIntake;
 import org.usfirst.frc.team5010.robot.subsystems.DirectionSensor;
-import org.usfirst.frc.team5010.robot.subsystems.DistanceSensor;
 import org.usfirst.frc.team5010.robot.subsystems.DriveTrainMain;
 import org.usfirst.frc.team5010.robot.subsystems.GearHolder;
 import org.usfirst.frc.team5010.robot.subsystems.RangeSensor;
@@ -34,26 +33,45 @@ public class RobotMap {
 		SmartDashboard.putNumber("tolerance", 1);
 		SmartDashboard.putString("Tolerance Buffer", "5");
 		SmartDashboard.putNumber("final distance", 15);
-		SmartDashboard.putNumber("angle", RobotMap.direction.angle());
+		SmartDashboard.putNumber("angle", 0);
 		SmartDashboard.putNumber("distance per pulse", 1.5 * Math.PI);
 	}
 
-	public static final SpeedController driveMotorLeft = new Spark(0);
-	public static final SpeedController driveMotorRight = new Spark(1);
+	public static  SpeedController driveMotorLeft;
+	public static  SpeedController driveMotorRight;
 
-	public static final Gyro gyro = new ADXRS450_Gyro();
-	public static final AnalogInput ultrasound = new AnalogInput(0);
-	public static final DoubleSolenoid solenoid = new DoubleSolenoid(1, 2);
+	public static  Gyro gyro;
+	public static  AnalogInput ultrasound;
+	public static  DoubleSolenoid solenoid;
 
-	public static final Encoder rightEncoder = new Encoder(0, 1);
-	public static final Encoder leftEncoder = new Encoder(2, 3);
-	public static final CameraServer camera = CameraServer.getInstance(); 
+	public static  Encoder rightEncoder;
+	public static  Encoder leftEncoder;
+	public static  CameraServer camera; 
 
-	public static final DriveTrainMain drivetrain = new DriveTrainMain();
-	public static final GearHolder gearHolder = new GearHolder();
-	public static final BallIntake ballIntake = new BallIntake();
-	public static final DirectionSensor direction = new DirectionSensor();
-	public static final RangeSensor range = new RangeSensor();
-	public static final DistanceSensor distance = new DistanceSensor();
-	public static final Vision vision = new Vision();
+	public static  DriveTrainMain drivetrain;
+	public static  GearHolder gearHolder;
+	public static  BallIntake ballIntake;
+	public static  DirectionSensor direction;
+	public static  RangeSensor range;
+	public static  Vision vision;
+	
+	public static void init() {
+		driveMotorLeft = new Spark(0);
+		driveMotorRight = new Spark(1);
+
+		gyro = new ADXRS450_Gyro();
+		ultrasound = new AnalogInput(0);
+		solenoid = new DoubleSolenoid(0, 1);
+
+		rightEncoder = new Encoder(0, 1);
+		leftEncoder = new Encoder(2, 3);
+		camera = CameraServer.getInstance(); 
+		drivetrain = new DriveTrainMain();
+		gearHolder = new GearHolder();
+		ballIntake = new BallIntake();
+		direction = new DirectionSensor();
+		range = new RangeSensor();
+		vision = new Vision();
+
+	}
 }

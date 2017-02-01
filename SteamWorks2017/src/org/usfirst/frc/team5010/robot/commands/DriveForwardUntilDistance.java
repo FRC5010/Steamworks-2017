@@ -2,6 +2,7 @@ package org.usfirst.frc.team5010.robot.commands;
 
 import org.usfirst.frc.team5010.robot.RobotMap;
 
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.command.PIDCommand;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -16,12 +17,18 @@ public class DriveForwardUntilDistance extends PIDCommand {
         super("angle",SmartDashboard.getNumber("P", 0.06), SmartDashboard.getNumber("I", 0.04), SmartDashboard.getNumber("D", 0.04));
         requires(RobotMap.drivetrain);
         requires(RobotMap.direction);
+        requires(RobotMap.ultrasound);
         getPIDController().setInputRange(6,200);
         getPIDController().setOutputRange(-0.2, 0.2);
        
     }
 
-    // Called just before this Command runs the first time
+    private void requires(AnalogInput ultrasound) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	// Called just before this Command runs the first time
     protected void initialize() {
         SmartDashboard.putNumber("Setpoint", getSetpoint());
     	setSetpoint(SmartDashboard.getNumber("final distance", 6));   
@@ -29,15 +36,17 @@ public class DriveForwardUntilDistance extends PIDCommand {
         getPIDController().setToleranceBuffer(Integer.valueOf(SmartDashboard.getString("Tolerance Buffer", "10")));
     	getPIDController().setPID(SmartDashboard.getNumber("P", 0.06), SmartDashboard.getNumber("I", 0.04), SmartDashboard.getNumber("D", 0.04));
     	RobotMap.direction.reset();
+    	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	currentAngle = RobotMap.direction.angle();
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
+    protected boolean isFinished() {    
         return getPIDController().onTarget();
     }
 

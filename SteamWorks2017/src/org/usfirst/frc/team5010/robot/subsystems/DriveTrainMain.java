@@ -26,8 +26,8 @@ public class DriveTrainMain extends Subsystem {
     }
     
     public void drive(double leftPower, double rightPower) {
-    	rightMotor.set(-rightPower);
-    	leftMotor.set(leftPower);
+    	rightMotor.set(rightPower);
+    	leftMotor.set(-leftPower);
     }
     
     public void spin(double power){

@@ -33,6 +33,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void robotInit() {
+		RobotMap.init();
 		RobotMap.smartDashboard();
 		oi = new OI();
 		chooser.addDefault("Default Auto", new TurnAndDrive());
