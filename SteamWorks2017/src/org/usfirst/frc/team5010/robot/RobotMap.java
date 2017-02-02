@@ -35,6 +35,8 @@ public class RobotMap {
 		SmartDashboard.putNumber("final distance", 15);
 		SmartDashboard.putNumber("angle", 0);
 		SmartDashboard.putNumber("distance per pulse", 1.5 * Math.PI);
+		SmartDashboard.putNumber("Distance", ultrasound.getVoltage());
+    	
 	}
 
 	public static  SpeedController driveMotorLeft;
@@ -60,7 +62,7 @@ public class RobotMap {
 		driveMotorRight = new Spark(1);
 
 		gyro = new ADXRS450_Gyro();
-		ultrasound = new AnalogInput(0);
+		ultrasound = new AnalogInput(1);
 		solenoid = new DoubleSolenoid(0, 1);
 
 		rightEncoder = new Encoder(0, 1);

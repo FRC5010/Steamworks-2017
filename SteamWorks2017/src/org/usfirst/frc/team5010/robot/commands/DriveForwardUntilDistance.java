@@ -12,29 +12,30 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class DriveForwardUntilDistance extends PIDCommand {
 	
 	private double currentAngle = 0;
+	private static double p = 0.06;
+	private static double i = 0.04;
+	private static double d = 0.04;
+	private static double tolerance = 0.25;
+	private static int toleranceBuffer = 10;
 	 //p 0.06 i 0.04 d 0.04
     public DriveForwardUntilDistance() {
-        super("angle",SmartDashboard.getNumber("P", 0.06), SmartDashboard.getNumber("I", 0.04), SmartDashboard.getNumber("D", 0.04));
+        super("DriveForwardUntilDistance", p, i, d);
         requires(RobotMap.drivetrain);
         requires(RobotMap.direction);
-        requires(RobotMap.ultrasound);
+        requires(RobotMap.range);
         getPIDController().setInputRange(6,200);
         getPIDController().setOutputRange(-0.2, 0.2);
        
     }
-
-    private void requires(AnalogInput ultrasound) {
-		// TODO Auto-generated method stub
-		
-	}
+    public void setPoint(double setPoint) {
+    	setSetpoint(setPoint);
+    }
 
 	// Called just before this Command runs the first time
     protected void initialize() {
-        SmartDashboard.putNumber("Setpoint", getSetpoint());
-    	setSetpoint(SmartDashboard.getNumber("final distance", 6));   
-        getPIDController().setAbsoluteTolerance(SmartDashboard.getNumber("tolerance", 1));
-        getPIDController().setToleranceBuffer(Integer.valueOf(SmartDashboard.getString("Tolerance Buffer", "10")));
-    	getPIDController().setPID(SmartDashboard.getNumber("P", 0.06), SmartDashboard.getNumber("I", 0.04), SmartDashboard.getNumber("D", 0.04));
+        SmartDashboard.putNumber("Setpoint", getSetpoint());   
+        getPIDController().setAbsoluteTolerance(tolerance);
+        getPIDController().setToleranceBuffer(toleranceBuffer);
     	RobotMap.direction.reset();
     	
     }

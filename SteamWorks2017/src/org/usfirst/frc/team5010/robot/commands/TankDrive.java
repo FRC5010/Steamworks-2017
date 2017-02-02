@@ -5,6 +5,7 @@ import org.usfirst.frc.team5010.robot.Robot;
 import org.usfirst.frc.team5010.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -15,6 +16,7 @@ public class TankDrive extends Command {
     
 	public TankDrive() {
     	requires(RobotMap.drivetrain);
+    	requires(RobotMap.range);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -29,6 +31,7 @@ public class TankDrive extends Command {
     	rightInputPower = Robot.oi.joy.getRawAxis(5);
     	
     	RobotMap.drivetrain.drive(leftInputPower, rightInputPower);
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()

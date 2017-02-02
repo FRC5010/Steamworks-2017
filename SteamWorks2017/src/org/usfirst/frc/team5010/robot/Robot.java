@@ -1,8 +1,7 @@
 
 package org.usfirst.frc.team5010.robot;
 
-import org.usfirst.frc.team5010.robot.commands.TurnAndDrive;
-import org.usfirst.frc.team5010.robot.commands.TurnToAngle;
+import org.usfirst.frc.team5010.robot.commands.AutonCommand1;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -36,7 +35,7 @@ public class Robot extends IterativeRobot {
 		RobotMap.init();
 		RobotMap.smartDashboard();
 		oi = new OI();
-		chooser.addDefault("Default Auto", new TurnAndDrive());
+		chooser.addDefault("Default Auto", new AutonCommand1());
 		//chooser.addObject("My Auto", new TurnToAngle());
 		SmartDashboard.putData("Auto mode", chooser);
 		
@@ -72,7 +71,6 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
 		autonomousCommand = chooser.getSelected();
-
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
 		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
@@ -109,6 +107,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+		RobotMap.smartDashboard();
 	}
 
 	/**
