@@ -1,6 +1,7 @@
 package org.usfirst.frc.team5010.robot;
 
 import org.usfirst.frc.team5010.robot.subsystems.BallIntake;
+import org.usfirst.frc.team5010.robot.subsystems.BallShooter;
 import org.usfirst.frc.team5010.robot.subsystems.DirectionSensor;
 import org.usfirst.frc.team5010.robot.subsystems.DriveTrainMain;
 import org.usfirst.frc.team5010.robot.subsystems.GearHolder;
@@ -56,6 +57,7 @@ public class RobotMap {
 	public static  DirectionSensor direction;
 	public static  RangeSensor range;
 	public static  Vision vision;
+	public static BallShooter ballshooter;
 	
 	public static void init() {
 		driveMotorLeft = new Spark(0);
@@ -74,6 +76,7 @@ public class RobotMap {
 		direction = new DirectionSensor();
 		range = new RangeSensor();
 		vision = new Vision();
+		ballshooter = new BallShooter(); 
 
 	}
 }

@@ -1,5 +1,8 @@
 package org.usfirst.frc.team5010.robot.commands;
 
+import org.usfirst.frc.team5010.robot.RobotMap;
+import org.usfirst.frc.team5010.robot.subsystems.BallShooter;
+
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -7,13 +10,13 @@ import edu.wpi.first.wpilibj.command.Command;
  * @since January 27, 2017
  */
 public class ShootHighGoalBall extends Command {
-
+	private BallShooter shooter;
 	/**
 	 * Default constructor.
 	 */
     public ShootHighGoalBall() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+    	requires(RobotMap.ballshooter);
+
     }
 
     // Called just before this Command runs the first time
@@ -22,11 +25,12 @@ public class ShootHighGoalBall extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	shooter.shootBallHigh();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
     // Called once after isFinished returns true
