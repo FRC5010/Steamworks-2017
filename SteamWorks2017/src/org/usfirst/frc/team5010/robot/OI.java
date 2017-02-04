@@ -50,12 +50,12 @@ public class OI {
 	
 	private Button buttonB = new JoystickButton(joyDriver, 2);
 	private Button buttonA = new JoystickButton(joyDriver, 1);
-	private Button buttonX = new JoystickButton(joyCoDriver, 3);
-	private Button buttonY = new JoystickButton(joyCoDriver, 4);
+	private Button buttonCoDX = new JoystickButton(joyCoDriver, 3);
+	private Button buttonCoDY = new JoystickButton(joyCoDriver, 4);
 	private Button buttonBack = new JoystickButton(joyDriver, 7);
 	private Button buttonStart = new JoystickButton(joyDriver, 8);
-	private JoystickAnalogButton leftTrigger = new JoystickAnalogButton(joyCoDriver, 3);
-	private JoystickAnalogButton rightTrigger = new JoystickAnalogButton(joyCoDriver, 4);
+	private JoystickAnalogButton leftCoDTrigger = new JoystickAnalogButton(joyCoDriver, 2);
+	private JoystickAnalogButton rightCoDTrigger = new JoystickAnalogButton(joyCoDriver, 3);
 	
 	/**
 	 * Default constructor.
@@ -66,11 +66,11 @@ public class OI {
 		buttonStart.whenPressed(new ExtendGearHolder());
 		buttonBack.whenPressed(new RetractGearHolder());
 
-		buttonX.whenPressed(new ShootLowGoalBall());
-		buttonY.whenPressed(new ShootHighGoalBall());
+		buttonCoDX.whenPressed(new ShootLowGoalBall());
+		buttonCoDY.whenPressed(new ShootHighGoalBall());
 
-		rightTrigger.whenPressed(new LoadBallIntake());
-		leftTrigger.whenPressed(new EmptyBallIntake());
+		rightCoDTrigger.whenPressed(new LoadBallIntake());
+		leftCoDTrigger.whenPressed(new EmptyBallIntake());
 		
 	}
 	

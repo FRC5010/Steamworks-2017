@@ -37,13 +37,16 @@ public class RobotMap {
 		SmartDashboard.putNumber("angle", 0);
 		SmartDashboard.putNumber("distance per pulse", 1.5 * Math.PI);
 		SmartDashboard.putNumber("Distance", ultrasound.getVoltage());
-    	
+    	SmartDashboard.putNumber("ballShooterHighSpeed", 1.0);
+    	SmartDashboard.putNumber("ballShooterLowSpeed", 0.5);
+    	SmartDashboard.putNumber("IntakeSpeed", 0.5);
+    	SmartDashboard.putNumber("IntakeReverseSpeed", -0.5);
 	}
 
 	public static  SpeedController driveMotorLeft;
 	public static  SpeedController driveMotorRight;
-	
-	public static Spark intakeMotor;
+	public static  SpeedController shootMotor;
+	public static SpeedController intakeMotor;
 
 	public static  Gyro gyro;
 	public static  AnalogInput ultrasound;
@@ -64,8 +67,8 @@ public class RobotMap {
 	public static void init() {
 		driveMotorLeft = new Spark(0);
 		driveMotorRight = new Spark(1);
-
 		intakeMotor = new Spark(2);
+		shootMotor = new Spark(3);
 		
 		gyro = new ADXRS450_Gyro();
 		ultrasound = new AnalogInput(0);

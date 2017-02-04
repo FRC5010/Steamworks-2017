@@ -1,5 +1,6 @@
 package org.usfirst.frc.team5010.robot.commands;
 
+import org.usfirst.frc.team5010.robot.Robot;
 import org.usfirst.frc.team5010.robot.RobotMap;
 import org.usfirst.frc.team5010.robot.subsystems.BallShooter;
 
@@ -30,7 +31,10 @@ public class ShootLowGoalBall extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+       if ( Robot.oi.joyCoDriver.getRawButton(3) == true )
+    	   return false; 
+       else 
+    	   return true;
     }
 
     // Called once after isFinished returns true
