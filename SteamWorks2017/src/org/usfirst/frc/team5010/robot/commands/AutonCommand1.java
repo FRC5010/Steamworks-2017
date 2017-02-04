@@ -1,5 +1,7 @@
 package org.usfirst.frc.team5010.robot.commands;
 
+import org.usfirst.frc.team5010.robot.RobotMap;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
@@ -8,17 +10,19 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class AutonCommand1 extends CommandGroup {
 
     public AutonCommand1() {
-    	
+    	RobotMap.direction.reset();
     	//can't have same command repeated.
     	DriveForwardUntilDistance step1 = new DriveForwardUntilDistance();
     	step1.setPoint(20);
+    	
     	TurnToAngle step2 = new TurnToAngle();
     	step2.setPoint(-90);
     	
     	TurnToAngle step3 = new TurnToAngle();
     	step3.setPoint(90);
-    	addSequential(step2);
+    	
     	addSequential(step1);
+    	addSequential(step2);
 //    	addSequential(step1);
     	addSequential(step3);
 //    	addSequential(step1);

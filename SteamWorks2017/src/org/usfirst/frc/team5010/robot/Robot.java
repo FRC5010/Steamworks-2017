@@ -22,6 +22,7 @@ public class Robot extends IterativeRobot {
 	//public static final Encoders encoder = new Encoders();
 
 	public static OI oi;
+	public static boolean forwardOrReverse = true;
 
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
@@ -39,7 +40,8 @@ public class Robot extends IterativeRobot {
 		//chooser.addObject("My Auto", new TurnToAngle());
 		SmartDashboard.putData("Auto mode", chooser);
 		
-//		RobotMap.vision.startVision();
+		RobotMap.vision.startFrontVision();
+		RobotMap.vision.startRearVision();
 	}
 
 	/**
@@ -70,7 +72,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		autonomousCommand = chooser.getSelected();
+		autonomousCommand = new AutonCommand1();//chooser.getSelected();
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
 		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
