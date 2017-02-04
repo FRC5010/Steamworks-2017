@@ -27,8 +27,8 @@ public class TankDrive extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	leftInputPower = Robot.oi.joy.getRawAxis(1);
-    	rightInputPower = Robot.oi.joy.getRawAxis(5);
+    	leftInputPower = Robot.oi.joyDriver.getRawAxis(1);
+    	rightInputPower = Robot.oi.joyDriver.getRawAxis(5);
     	
     	RobotMap.drivetrain.drive(leftInputPower, rightInputPower);
     	SmartDashboard.putNumber("distance", RobotMap.range.getDistance());

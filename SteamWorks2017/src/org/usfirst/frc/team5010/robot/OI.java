@@ -45,16 +45,17 @@ public class OI {
 	// Start the command when the button is released and let it run the command
 	// until it is finished as determined by it's isFinished method.
 	// button.whenReleased(new ExampleCommand());
-	public Joystick joy = new Joystick(0);
+	public Joystick joyDriver = new Joystick(0);
+	public Joystick joyCoDriver = new Joystick(1);
 	
-	private Button buttonB = new JoystickButton(joy, 2);
-	private Button buttonA = new JoystickButton(joy, 1);
-	private Button buttonX = new JoystickButton(joy, 3);
-	private Button buttonY = new JoystickButton(joy, 4);
-	private Button buttonBack = new JoystickButton(joy, 7);
-	private Button buttonStart = new JoystickButton(joy, 8);
-	private JoystickAnalogButton lefttrigger = new JoystickAnalogButton(joy, 3);
-	private JoystickAnalogButton righttrigger = new JoystickAnalogButton(joy, 4);
+	private Button buttonB = new JoystickButton(joyDriver, 2);
+	private Button buttonA = new JoystickButton(joyDriver, 1);
+	private Button buttonX = new JoystickButton(joyCoDriver, 3);
+	private Button buttonY = new JoystickButton(joyCoDriver, 4);
+	private Button buttonBack = new JoystickButton(joyDriver, 7);
+	private Button buttonStart = new JoystickButton(joyDriver, 8);
+	private JoystickAnalogButton leftTrigger = new JoystickAnalogButton(joyCoDriver, 3);
+	private JoystickAnalogButton rightTrigger = new JoystickAnalogButton(joyCoDriver, 4);
 	
 	/**
 	 * Default constructor.
@@ -68,8 +69,8 @@ public class OI {
 		buttonX.whenPressed(new ShootLowGoalBall());
 		buttonY.whenPressed(new ShootHighGoalBall());
 
-		righttrigger.whenPressed(new LoadBallIntake());
-		lefttrigger.whenPressed(new EmptyBallIntake());
+		rightTrigger.whenPressed(new LoadBallIntake());
+		leftTrigger.whenPressed(new EmptyBallIntake());
 		
 	}
 	

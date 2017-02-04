@@ -31,7 +31,7 @@ public class LoadBallIntake extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Robot.oi.joy.getRawButton(3);
+        return Robot.oi.joyDriver.getRawButton(3);
     }
 
     // Called once after isFinished returns true
