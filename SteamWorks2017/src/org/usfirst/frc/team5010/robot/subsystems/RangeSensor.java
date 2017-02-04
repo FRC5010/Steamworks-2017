@@ -4,6 +4,7 @@ import org.usfirst.frc.team5010.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -23,6 +24,7 @@ public class RangeSensor extends Subsystem {
     }
     
     public double getDistance() {
+    	SmartDashboard.putNumber("value", ultrasound.getValue());
     	return ultrasound.getValue() / 9.8;
     }
 }

@@ -31,7 +31,7 @@ public class TankDrive extends Command {
     	rightInputPower = Robot.oi.joy.getRawAxis(5);
     	
     	RobotMap.drivetrain.drive(leftInputPower, rightInputPower);
-    	
+    	SmartDashboard.putNumber("distance", RobotMap.range.getDistance());
     }
 
     // Make this return true when this Command no longer needs to run execute()

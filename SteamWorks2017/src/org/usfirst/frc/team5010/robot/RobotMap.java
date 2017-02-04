@@ -26,9 +26,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class RobotMap {
 
 	public static void smartDashboard() {
-		SmartDashboard.putNumber("D", 0.1);
-		SmartDashboard.putNumber("I", 0.7);
-		SmartDashboard.putNumber("P", 1);
+		SmartDashboard.putNumber("D", 0.04);
+		SmartDashboard.putNumber("I", 0.04);
+		SmartDashboard.putNumber("P", 0.06);
 		SmartDashboard.putNumber("Final Angle", 90);
 		SmartDashboard.putNumber("tolerance", 1);
 		SmartDashboard.putString("Tolerance Buffer", "5");
@@ -41,6 +41,8 @@ public class RobotMap {
 
 	public static  SpeedController driveMotorLeft;
 	public static  SpeedController driveMotorRight;
+	
+	public static Spark intakeMotor;
 
 	public static  Gyro gyro;
 	public static  AnalogInput ultrasound;
@@ -61,8 +63,10 @@ public class RobotMap {
 		driveMotorLeft = new Spark(0);
 		driveMotorRight = new Spark(1);
 
+		intakeMotor = new Spark(2);
+		
 		gyro = new ADXRS450_Gyro();
-		ultrasound = new AnalogInput(1);
+		ultrasound = new AnalogInput(0);
 		solenoid = new DoubleSolenoid(0, 1);
 
 		rightEncoder = new Encoder(0, 1);

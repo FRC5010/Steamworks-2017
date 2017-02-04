@@ -11,15 +11,16 @@ public class AutonCommand1 extends CommandGroup {
     	
     	//can't have same command repeated.
     	DriveForwardUntilDistance step1 = new DriveForwardUntilDistance();
-    	step1.setPoint(6);
+    	step1.setPoint(20);
     	TurnToAngle step2 = new TurnToAngle();
     	step2.setPoint(-90);
+    	
     	TurnToAngle step3 = new TurnToAngle();
     	step3.setPoint(90);
-    	addSequential(step1);
     	addSequential(step2);
+    	addSequential(step1);
 //    	addSequential(step1);
-//    	addSequential(step3);
+    	addSequential(step3);
 //    	addSequential(step1);
 //    	addSequential(step3);
 //    	addSequential(step1);

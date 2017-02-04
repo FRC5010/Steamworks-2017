@@ -33,6 +33,7 @@ public class DriveForwardUntilDistance extends PIDCommand {
 
 	// Called just before this Command runs the first time
     protected void initialize() {
+    	
         SmartDashboard.putNumber("Setpoint", getSetpoint());   
         getPIDController().setAbsoluteTolerance(tolerance);
         getPIDController().setToleranceBuffer(toleranceBuffer);
@@ -43,7 +44,7 @@ public class DriveForwardUntilDistance extends PIDCommand {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	currentAngle = RobotMap.direction.angle();
-    	
+    	SmartDashboard.putNumber("angle", currentAngle);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -54,6 +55,7 @@ public class DriveForwardUntilDistance extends PIDCommand {
     // Called once after isFinished returns true
     protected void end() {
     	RobotMap.drivetrain.stop();
+    	getPIDController().reset();
     }
 
     // Called when another command which requires one or more of the same
@@ -73,8 +75,8 @@ public class DriveForwardUntilDistance extends PIDCommand {
 	protected void usePIDOutput(double output) {
 		SmartDashboard.putNumber("output", output);
 		// TODO: Check the gyro from a subsystem and adjust the output to the drive system to keep the robot straight
-			double leftOutput = .5 * output; //- (currentAngle / 180);
-			double rightOutput = .5 * output; //+ (currentAngle / 180);
+			double leftOutput = output; //- (currentAngle / 180);
+			double rightOutput = output; //+ (currentAngle / 180);
 			RobotMap.drivetrain.drive(leftOutput, rightOutput);
 	}
 }
