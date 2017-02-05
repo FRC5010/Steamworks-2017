@@ -25,8 +25,8 @@ public class TankDriveForward extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	Robot.forwardOrReverse = true;
-//    	RobotMap.vision.stopRearVision();
-//    	RobotMap.vision.startFrontVision();
+    	RobotMap.vision.stopRearVision();
+    	RobotMap.vision.startFrontVision();
     }
 
     // Called repeatedly when this Command is scheduled to run
