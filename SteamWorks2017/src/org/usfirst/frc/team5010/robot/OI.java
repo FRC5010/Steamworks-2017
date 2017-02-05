@@ -1,10 +1,13 @@
 package org.usfirst.frc.team5010.robot;
 
-import org.usfirst.frc.team5010.robot.commands.DriveForwardUntilDistance;
+import org.usfirst.frc.team5010.oi.JoystickAnalogButton;
+import org.usfirst.frc.team5010.robot.commands.EmptyBallIntake;
 import org.usfirst.frc.team5010.robot.commands.ExtendGearHolder;
+import org.usfirst.frc.team5010.robot.commands.LoadBallIntake;
 import org.usfirst.frc.team5010.robot.commands.RetractGearHolder;
 import org.usfirst.frc.team5010.robot.commands.ShootHighGoalBall;
 import org.usfirst.frc.team5010.robot.commands.ShootLowGoalBall;
+import org.usfirst.frc.team5010.robot.commands.SwitchDriveMode;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -42,25 +45,33 @@ public class OI {
 	// Start the command when the button is released and let it run the command
 	// until it is finished as determined by it's isFinished method.
 	// button.whenReleased(new ExampleCommand());
-	public Joystick joy = new Joystick(0);
+	public Joystick joyDriver = new Joystick(0);
+	public Joystick joyCoDriver = new Joystick(1);
 	
-	private Button buttonB = new JoystickButton(joy, 2);
-	private Button buttonA = new JoystickButton(joy, 1);
-	private Button buttonX = new JoystickButton(joy, 3);
-	private Button buttonY = new JoystickButton(joy, 4);
+	private Button buttonB = new JoystickButton(joyDriver, 2);
+	private Button buttonA = new JoystickButton(joyDriver, 1);
+	private Button buttonCoDX = new JoystickButton(joyCoDriver, 3);
+	private Button buttonCoDY = new JoystickButton(joyCoDriver, 4);
+	private Button buttonBack = new JoystickButton(joyDriver, 7);
+	private Button buttonStart = new JoystickButton(joyDriver, 8);
+	private JoystickAnalogButton leftCoDTrigger = new JoystickAnalogButton(joyCoDriver, 2);
+	private JoystickAnalogButton rightCoDTrigger = new JoystickAnalogButton(joyCoDriver, 3);
 	
 	/**
 	 * Default constructor.
 	 */
 	public OI () {
-		buttonB.whenReleased(new DriveForwardUntilDistance());
+		buttonB.whenReleased(new SwitchDriveMode());
 	
-		buttonA.whenPressed(new ExtendGearHolder());
-		buttonA.whenReleased(new RetractGearHolder());
+		buttonStart.whenPressed(new ExtendGearHolder());
+		buttonBack.whenPressed(new RetractGearHolder());
 
-		buttonX.whenPressed(new ShootLowGoalBall());
-		buttonY.whenPressed(new ShootHighGoalBall());
+		buttonCoDX.whenPressed(new ShootLowGoalBall());
+		buttonCoDY.whenPressed(new ShootHighGoalBall());
 
+		rightCoDTrigger.whenPressed(new LoadBallIntake());
+		leftCoDTrigger.whenPressed(new EmptyBallIntake());
+		
 	}
 	
 }

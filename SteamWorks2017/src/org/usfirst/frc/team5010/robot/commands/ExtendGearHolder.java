@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class ExtendGearHolder extends Command {
 
 	GearHolder gearHolder = null;
-
+	long startTime = 0;
 	/**
 	 * Default Constructor.
 	 */
@@ -22,10 +22,12 @@ public class ExtendGearHolder extends Command {
 		super("GearHolder");
 
 		requires(RobotMap.gearHolder);
+		this.gearHolder = RobotMap.gearHolder;
+
 	}
 
 	protected void initialize() {
-		this.gearHolder = RobotMap.gearHolder;
+		startTime = System.currentTimeMillis();
 	}
 
 	// Called repeatedly when this Command is scheduled to run
@@ -35,11 +37,12 @@ public class ExtendGearHolder extends Command {
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		return true;
+		return (startTime + 1000 < System.currentTimeMillis());
 	}
 
 	// Called once after isFinished returns true
 	protected void end() {
+		gearHolder.stop();
 	}
 
 	// Called when another command which requires one or more of the same

@@ -11,17 +11,20 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class RetractGearHolder extends Command {
 	GearHolder gearHolder = null;
+	long startTime = 0;
 
 	/**
 	 * Default constructor.
 	 */
 	public RetractGearHolder() {
     	requires(RobotMap.gearHolder);
+    	this.gearHolder = RobotMap.gearHolder;
+
     }
 	
     // Called just before this Command runs the first time
     protected void initialize() {
-    	this.gearHolder = RobotMap.gearHolder;
+    	startTime = System.currentTimeMillis();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -31,11 +34,12 @@ public class RetractGearHolder extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+		return (startTime + 1000 < System.currentTimeMillis());
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	gearHolder.stop();
     }
 
     // Called when another command which requires one or more of the same

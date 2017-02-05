@@ -1,6 +1,8 @@
 package org.usfirst.frc.team5010.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import org.usfirst.frc.team5010.robot.RobotMap;
 
 /**
  * @author Jackson Lee
@@ -8,12 +10,12 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class BallShooter extends Subsystem {
 
+
 	/**
 	 * Default constructor.
 	 */
     public BallShooter()
     {
-    	
     }
 
     public void initDefaultCommand() {
@@ -21,12 +23,20 @@ public class BallShooter extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
     
+    /**
+     * Function to shoot the ball high.
+     */
     public void shootBallHigh() {
-    	System.out.println("Temporary notification of shooting ball high.");
+    	double shootSpeed = SmartDashboard.getNumber("ballShooterHighSpeed", 1.0);
+    	RobotMap.shootMotor.set(shootSpeed);
     }
     
+    /**
+     * Function to shoot the ball low.
+     */
     public void shootBallLow() {
-    	System.out.println("Temporary notification of shooting ball low.");
+    	double shootSpeed = SmartDashboard.getNumber("ballShooterLowSpeed", 0.5);
+    	RobotMap.shootMotor.set(shootSpeed);
     }
 }
 

@@ -1,6 +1,9 @@
 package org.usfirst.frc.team5010.robot.subsystems;
 
+import org.usfirst.frc.team5010.robot.RobotMap;
+
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * @author Jackson Lee
@@ -13,7 +16,6 @@ public class BallIntake extends Subsystem {
 	 */
 	public BallIntake()
 	{
-		
 	}
 	
     public void initDefaultCommand() {
@@ -22,11 +24,18 @@ public class BallIntake extends Subsystem {
     }
     
     public void gatherBallToTank() {
-    	System.out.println("Temporary notification of gathering ball into tank.");
+    	double motorSpeed=SmartDashboard.getNumber("IntakeSpeed", 0.5);
+    	RobotMap.intakeMotor.set(motorSpeed);
+    
     }
     
     public void reverseBallOut() {
-    	System.out.println("Temporary notification of reversing ball out.");
+    	double motorSpeed=SmartDashboard.getNumber("IntakeReverseSpeed", -0.5);
+    	RobotMap.intakeMotor.set(motorSpeed);
+    }
+    
+    public void stop() {
+    	RobotMap.intakeMotor.set(0);
     }
 
 }
