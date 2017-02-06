@@ -28,18 +28,24 @@ public class Vision extends Subsystem {
 		camera0 = RobotMap.camera.startAutomaticCapture();
 	}
 
-//	public void startVision() {
-//		// camera.startAutomaticCapture(1);
-//		camera0.setResolution(320, 240);
-//		// GripPipelinepeg needs to implement VisionPipeline (GripPipelinepeg implements VisionPipeline)
-//		visionThread = new VisionThread(camera0, new GripPipelinepeg(), pipeline -> {
-//			if (!pipeline.filterContoursOutput().isEmpty()) {
-//				// Write a function that takes an ArrayList<MatOfPoint> and processes the screen objects
-//				processScreenContours(pipeline.filterContoursOutput());
-//			}
-//		});
-//
-//	}
+	public void startVision() {
+		// camera.startAutomaticCapture(1);
+		camera0.setResolution(320, 240);
+		// GripPipelinepeg needs to implement VisionPipeline (GripPipelinepeg implements VisionPipeline)
+		visionThread = new VisionThread(camera0, new GripPipelinepeg(), pipeline -> {
+			if (!pipeline.filterContoursOutput().isEmpty()) {
+				// Write a function that takes an ArrayList<MatOfPoint> and processes the screen objects
+				processScreenContours(pipeline.filterContoursOutput());
+			}
+		});
+
+	}
+	public void readX() {
+		double centerX;
+		synchronized (imgLock){
+			centerX = this.centerX;
+		}
+	}
 
 	private void processScreenContours(ArrayList<MatOfPoint> contourList) {
 		// This function will loop over the list and pick out the 2 target contours
