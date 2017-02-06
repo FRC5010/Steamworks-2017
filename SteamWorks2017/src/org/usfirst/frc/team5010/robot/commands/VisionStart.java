@@ -21,7 +21,7 @@ public class VisionStart extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-   RobotMap.vision.readX();
+    RobotMap.vision.readX();
     }
 
     // Make this return true when this Command no longer needs to run execute()
