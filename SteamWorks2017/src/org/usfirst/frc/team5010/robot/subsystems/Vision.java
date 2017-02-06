@@ -82,6 +82,12 @@ public class Vision extends Subsystem {
 			}
 		});
 	}
+	public void readX() {
+		double centerX;
+		synchronized (imgLock){
+			centerX= this.centerX;
+		}
+	}
 
 	private void processScreenContours(ArrayList<MatOfPoint> contourList) {
 		// This function will loop over the list and pick out the 2 target contours
