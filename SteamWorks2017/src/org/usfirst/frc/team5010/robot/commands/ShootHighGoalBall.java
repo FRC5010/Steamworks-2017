@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class ShootHighGoalBall extends Command {
 	private BallShooter shooter;
+	
 	/**
 	 * Default constructor.
 	 */

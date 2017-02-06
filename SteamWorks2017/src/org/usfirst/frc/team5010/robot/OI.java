@@ -50,6 +50,8 @@ public class OI {
 	
 	private Button buttonB = new JoystickButton(joyDriver, 2);
 	private Button buttonA = new JoystickButton(joyDriver, 1);
+	private Button buttonCoDA=new JoystickButton(joyDriver, 1);
+	private Button buttonCoDB=new JoystickButton(joyDriver, 2);
 	private Button buttonCoDX = new JoystickButton(joyCoDriver, 3);
 	private Button buttonCoDY = new JoystickButton(joyCoDriver, 4);
 	private Button buttonBack = new JoystickButton(joyDriver, 7);
@@ -65,12 +67,15 @@ public class OI {
 	
 		buttonStart.whenPressed(new ExtendGearHolder());
 		buttonBack.whenPressed(new RetractGearHolder());
-
+		
 		buttonCoDX.whenPressed(new ShootLowGoalBall());
 		buttonCoDY.whenPressed(new ShootHighGoalBall());
-
-		rightCoDTrigger.whenPressed(new LoadBallIntake());
-		leftCoDTrigger.whenPressed(new EmptyBallIntake());
+		
+		// Can use either A&B or Left/Right Triggers.  Configured for buttons at moment.
+		buttonCoDA.whenPressed(new EmptyBallIntake());
+		buttonCoDB.whenPressed(new LoadBallIntake());
+		//rightCoDTrigger.whenPressed(new LoadBallIntake());
+		//leftCoDTrigger.whenPressed(new EmptyBallIntake());
 		
 	}
 	
