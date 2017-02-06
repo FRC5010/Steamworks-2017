@@ -1,6 +1,7 @@
 package org.usfirst.frc.team5010.robot;
 
 import org.usfirst.frc.team5010.oi.JoystickAnalogButton;
+import org.usfirst.frc.team5010.robot.commands.Climb;
 import org.usfirst.frc.team5010.robot.commands.EmptyBallIntake;
 import org.usfirst.frc.team5010.robot.commands.ExtendGearHolder;
 import org.usfirst.frc.team5010.robot.commands.LoadBallIntake;
@@ -50,6 +51,8 @@ public class OI {
 	
 	private Button buttonB = new JoystickButton(joyDriver, 2);
 	private Button buttonA = new JoystickButton(joyDriver, 1);
+	private Button buttonCoDLB = new JoystickButton(joyDriver, 5);
+	private Button buttonCoDRB = new JoystickButton(joyDriver, 6);
 	private Button buttonCoDA=new JoystickButton(joyDriver, 1);
 	private Button buttonCoDB=new JoystickButton(joyDriver, 2);
 	private Button buttonCoDX = new JoystickButton(joyCoDriver, 3);
@@ -76,6 +79,8 @@ public class OI {
 		buttonCoDB.whenPressed(new LoadBallIntake());
 		//rightCoDTrigger.whenPressed(new LoadBallIntake());
 		//leftCoDTrigger.whenPressed(new EmptyBallIntake());
+		
+		buttonCoDLB.whenPressed(new Climb());
 		
 	}
 	
