@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class DriveForwardUntilDistance extends PIDCommand {
 	
 	private double currentAngle = 0;
+	private double startAngle = 0;
 	private static double p = 0.06;
 	private static double i = 0.04;
 	private static double d = 0.04;
@@ -37,7 +38,7 @@ public class DriveForwardUntilDistance extends PIDCommand {
         SmartDashboard.putNumber("Setpoint", getSetpoint());   
         getPIDController().setAbsoluteTolerance(tolerance);
         getPIDController().setToleranceBuffer(toleranceBuffer);
-    	RobotMap.direction.reset();
+    	startAngle = RobotMap.direction.angle();
     	
     }
 
@@ -75,8 +76,8 @@ public class DriveForwardUntilDistance extends PIDCommand {
 	protected void usePIDOutput(double output) {
 		SmartDashboard.putNumber("output", output);
 		// TODO: Check the gyro from a subsystem and adjust the output to the drive system to keep the robot straight
-			double leftOutput = output; //- (currentAngle / 180);
-			double rightOutput = output; //+ (currentAngle / 180);
+			double leftOutput = output - ((startAngle - currentAngle) / 180);
+			double rightOutput = output + ((startAngle - currentAngle) / 180);
 			RobotMap.drivetrain.drive(leftOutput, rightOutput);
 	}
 }

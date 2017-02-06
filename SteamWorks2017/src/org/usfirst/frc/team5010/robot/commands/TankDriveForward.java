@@ -10,19 +10,23 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  *
  */
-public class TankDrive extends Command {
+public class TankDriveForward extends Command {
 	private double leftInputPower;
 	private double rightInputPower;
     
-	public TankDrive() {
+	public TankDriveForward() {
     	requires(RobotMap.drivetrain);
     	requires(RobotMap.range);
+    	requires(RobotMap.vision);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.forwardOrReverse = true;
+    	RobotMap.vision.stopRearVision();
+    	RobotMap.vision.startFrontVision();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -42,6 +46,7 @@ public class TankDrive extends Command {
     // Called once after isFinished returns true
     protected void end() {
     	RobotMap.drivetrain.drive(0,0);
+//    	RobotMap.vision.stopFrontVision();
     }
 
     // Called when another command which requires one or more of the same

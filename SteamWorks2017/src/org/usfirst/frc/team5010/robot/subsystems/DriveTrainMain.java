@@ -1,7 +1,7 @@
 package org.usfirst.frc.team5010.robot.subsystems;
 
 import org.usfirst.frc.team5010.robot.RobotMap;
-import org.usfirst.frc.team5010.robot.commands.TankDrive;
+import org.usfirst.frc.team5010.robot.commands.TankDriveForward;
 
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -16,13 +16,7 @@ public class DriveTrainMain extends Subsystem {
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
-    	setDefaultCommand(new TankDrive());
-    }
-
-    public void driveStraightandSafe(double power) {
-    	rightMotor.set(power);
-    	leftMotor.set(-power);
-    	
+    	setDefaultCommand(new TankDriveForward());
     }
     
     public void drive(double leftPower, double rightPower) {

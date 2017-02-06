@@ -1,3 +1,4 @@
+
 package org.usfirst.frc.team5010.robot.subsystems;
 
 import java.util.ArrayList;
@@ -9,6 +10,7 @@ import org.usfirst.frc.team5010.robot.GripPipelinepeg;
 import org.usfirst.frc.team5010.robot.RobotMap;
 
 import edu.wpi.cscore.UsbCamera;
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.vision.VisionThread;
 
@@ -16,21 +18,62 @@ import edu.wpi.first.wpilibj.vision.VisionThread;
  *
  */
 public class Vision extends Subsystem {
-	private final UsbCamera camera0;
+	private static final String REAR_CAMERA = "RearCamera";
 
+	private static final String FRONT_CAMERA = "FrontCamera";
+
+	private UsbCamera camera0 = null;
+	private UsbCamera camera1 = null;
+	
 	private VisionThread visionThread;
 	private final Object imgLock = new Object();
 	private double centerX = 0.0;
 
-	// Put methods for controlling this subsystem
-	// here. Call these from Commands
+    // Put methods for controlling this subsystem
+    // here. Call these from Commands.
 	public Vision() {
-		camera0 = RobotMap.camera.startAutomaticCapture();
+		RobotMap.camera = CameraServer.getInstance();
 	}
 
-	public void startVision() {
-		// camera.startAutomaticCapture(1);
-		camera0.setResolution(320, 240);
+	public void startFrontVision() {
+		if (null == camera0) {
+			camera0 = RobotMap.camera.startAutomaticCapture(FRONT_CAMERA, 0);
+			camera0.setResolution(320, 240);
+			camera0.setFPS(15);
+		}
+		RobotMap.camera.getVideo(FRONT_CAMERA).setEnabled(true);
+	}
+
+	public void startRearVision() {
+		if (null == camera1) {
+			camera1 = RobotMap.camera.startAutomaticCapture(REAR_CAMERA, 1);
+			camera1.setResolution(160, 120);
+			camera1.setFPS(10);
+		}
+		RobotMap.camera.getVideo(REAR_CAMERA).setEnabled(true);
+	}
+
+	public void stopFrontVision() {
+		if (null != RobotMap.camera) {
+			RobotMap.camera.getVideo(FRONT_CAMERA).setEnabled(false);
+		}
+	}
+
+	public void stopRearVision() {
+		if (null != RobotMap.camera) {
+			RobotMap.camera.getVideo(REAR_CAMERA).setEnabled(false);
+		}
+	}
+
+	public double getX() {
+		double x;
+		synchronized (imgLock) {
+			x = centerX;
+		}
+		return x;
+	}
+	
+	public void startTargeting() {
 		// GripPipelinepeg needs to implement VisionPipeline (GripPipelinepeg implements VisionPipeline)
 		visionThread = new VisionThread(camera0, new GripPipelinepeg(), pipeline -> {
 			if (!pipeline.filterContoursOutput().isEmpty()) {
@@ -38,13 +81,6 @@ public class Vision extends Subsystem {
 				processScreenContours(pipeline.filterContoursOutput());
 			}
 		});
-
-	}
-	public void readX() {
-		double centerX;
-		synchronized (imgLock){
-			centerX = this.centerX;
-		}
 	}
 
 	private void processScreenContours(ArrayList<MatOfPoint> contourList) {
@@ -60,6 +96,7 @@ public class Vision extends Subsystem {
 	public void stop() {
 		visionThread.stop();
 	}
+
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
 		// setDefaultCommand(new MySpecialCommand());
