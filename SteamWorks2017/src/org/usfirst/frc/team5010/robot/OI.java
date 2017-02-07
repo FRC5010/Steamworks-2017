@@ -51,10 +51,10 @@ public class OI {
 	
 	private Button buttonB = new JoystickButton(joyDriver, 2);
 	private Button buttonA = new JoystickButton(joyDriver, 1);
-	private Button buttonCoDLB = new JoystickButton(joyDriver, 5);
-	private Button buttonCoDRB = new JoystickButton(joyDriver, 6);
-	private Button buttonCoDA=new JoystickButton(joyDriver, 1);
-	private Button buttonCoDB=new JoystickButton(joyDriver, 2);
+	private Button buttonLB = new JoystickButton(joyDriver, 5);
+	private Button buttonRB = new JoystickButton(joyDriver, 6);
+	private Button buttonCoDA=new JoystickButton(joyCoDriver, 1);
+	private Button buttonCoDB=new JoystickButton(joyCoDriver, 2);
 	private Button buttonCoDX = new JoystickButton(joyCoDriver, 3);
 	private Button buttonCoDY = new JoystickButton(joyCoDriver, 4);
 	private Button buttonBack = new JoystickButton(joyDriver, 7);
@@ -80,7 +80,7 @@ public class OI {
 		//rightCoDTrigger.whenPressed(new LoadBallIntake());
 		//leftCoDTrigger.whenPressed(new EmptyBallIntake());
 		
-		buttonCoDLB.whenPressed(new Climb());
+		buttonLB.whenPressed(new Climb());
 		
 	}
 	
