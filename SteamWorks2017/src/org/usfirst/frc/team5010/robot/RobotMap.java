@@ -2,6 +2,7 @@ package org.usfirst.frc.team5010.robot;
 
 import org.usfirst.frc.team5010.robot.subsystems.BallIntake;
 import org.usfirst.frc.team5010.robot.subsystems.BallShooter;
+import org.usfirst.frc.team5010.robot.subsystems.Climber;
 import org.usfirst.frc.team5010.robot.subsystems.DirectionSensor;
 import org.usfirst.frc.team5010.robot.subsystems.DriveTrainMain;
 import org.usfirst.frc.team5010.robot.subsystems.GearHolder;
@@ -41,12 +42,14 @@ public class RobotMap {
     	SmartDashboard.putNumber("ballShooterLowSpeed", 0.5);
     	SmartDashboard.putNumber("IntakeSpeed", 0.5);
     	SmartDashboard.putNumber("IntakeReverseSpeed", -0.5);
+    	SmartDashboard.putNumber("climbingSpeed", 0.2);
 	}
 
 	public static  SpeedController driveMotorLeft;
 	public static  SpeedController driveMotorRight;
 	public static  SpeedController shootMotor;
 	public static SpeedController intakeMotor;
+	public static SpeedController climbMotor;
 
 	public static  Gyro gyro;
 	public static  AnalogInput ultrasound;
@@ -64,11 +67,14 @@ public class RobotMap {
 	public static  Vision vision;
 	public static BallShooter ballshooter;
 	
+	public static Climber climber;
+	
 	public static void init() {
-		driveMotorLeft = new Spark(0);
-		driveMotorRight = new Spark(1);
-		intakeMotor = new Spark(2);
+		driveMotorLeft = new Spark(1);
+		driveMotorRight = new Spark(0);
+		intakeMotor = new Spark(4);
 		shootMotor = new Spark(3);
+		climbMotor=new Spark(2);
 		
 		gyro = new ADXRS450_Gyro();
 		ultrasound = new AnalogInput(0);
@@ -84,6 +90,6 @@ public class RobotMap {
 		range = new RangeSensor();
 		vision = new Vision();
 		ballshooter = new BallShooter(); 
-
+		climber=new Climber();
 	}
 }

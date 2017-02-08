@@ -2,23 +2,23 @@ package org.usfirst.frc.team5010.robot.commands;
 
 import org.usfirst.frc.team5010.robot.Robot;
 import org.usfirst.frc.team5010.robot.RobotMap;
-import org.usfirst.frc.team5010.robot.subsystems.BallShooter;
+import org.usfirst.frc.team5010.robot.subsystems.Climber;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- * @author Jackson Lee
- * @since January 27, 2017
+ * @author Chip
+ * @since February 6, 2017
  */
-public class ShootHighGoalBall extends Command {
-	private BallShooter shooter;
-	
-	/**
-	 * Default constructor.
-	 */
-    public ShootHighGoalBall() {
-    	requires(RobotMap.ballshooter);
+public class Climb extends Command {
 
+	private Climber littleClimber;
+	
+    public Climb() {
+        // Use requires() here to declare subsystem dependencies
+        // eg. requires(chassis);
+    	requires(RobotMap.climber);
+    	littleClimber=RobotMap.climber;
     }
 
     // Called just before this Command runs the first time
@@ -27,15 +27,17 @@ public class ShootHighGoalBall extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	shooter.shootBallHigh();
+    	littleClimber.startClimbing();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        if ( Robot.oi.joyCoDriver.getRawButton(4) == true )
-     	   return false; 
-        else 
-     	   return true;
+        if(Robot.oi.joyDriver.getRawButton(5)) {
+        	return true;
+        }
+        else {
+        	return false;
+        }
     }
 
     // Called once after isFinished returns true
