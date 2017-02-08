@@ -23,14 +23,7 @@ public class AutonCommand1 extends CommandGroup {
     	
     	addSequential(step1);
     	addSequential(step2);
-//    	addSequential(step1);
     	addSequential(step3);
-//    	addSequential(step1);
-//    	addSequential(step3);
-//    	addSequential(step1);
-//    	addSequential(step3);
-//    	addSequential(step1);
-//    	addSequential(step3);
     	
     	
         // Add Commands here:
