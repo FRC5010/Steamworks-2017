@@ -17,7 +17,7 @@ public class TankDriveForward extends Command {
 	public TankDriveForward() {
     	requires(RobotMap.drivetrain);
     	requires(RobotMap.range);
-    	requires(RobotMap.vision);
+
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }

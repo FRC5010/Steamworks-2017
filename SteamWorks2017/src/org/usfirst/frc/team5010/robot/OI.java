@@ -8,6 +8,7 @@ import org.usfirst.frc.team5010.robot.commands.RetractGearHolder;
 import org.usfirst.frc.team5010.robot.commands.ShootHighGoalBall;
 import org.usfirst.frc.team5010.robot.commands.ShootLowGoalBall;
 import org.usfirst.frc.team5010.robot.commands.SwitchDriveMode;
+import org.usfirst.frc.team5010.robot.commands.VisionStart;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -56,6 +57,7 @@ public class OI {
 	private Button buttonStart = new JoystickButton(joyDriver, 8);
 	private JoystickAnalogButton leftCoDTrigger = new JoystickAnalogButton(joyCoDriver, 2);
 	private JoystickAnalogButton rightCoDTrigger = new JoystickAnalogButton(joyCoDriver, 3);
+	private Button buttonY = new JoystickButton(joyDriver, 4);
 	
 	/**
 	 * Default constructor.
@@ -65,12 +67,15 @@ public class OI {
 	
 		buttonStart.whenPressed(new ExtendGearHolder());
 		buttonBack.whenPressed(new RetractGearHolder());
+		
+		buttonY.whenPressed(new VisionStart());
 
 		buttonCoDX.whenPressed(new ShootLowGoalBall());
 		buttonCoDY.whenPressed(new ShootHighGoalBall());
 
 		rightCoDTrigger.whenPressed(new LoadBallIntake());
 		leftCoDTrigger.whenPressed(new EmptyBallIntake());
+		
 		
 	}
 	
