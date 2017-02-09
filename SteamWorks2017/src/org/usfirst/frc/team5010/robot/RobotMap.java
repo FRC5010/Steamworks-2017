@@ -38,11 +38,11 @@ public class RobotMap {
 		SmartDashboard.putNumber("angle", 0);
 		SmartDashboard.putNumber("distance per pulse", 1.5 * Math.PI);
 		SmartDashboard.putNumber("Distance", ultrasound.getVoltage());
-    	SmartDashboard.putNumber("ballShooterHighSpeed", 1.0);
-    	SmartDashboard.putNumber("ballShooterLowSpeed", 0.5);
+    	SmartDashboard.putNumber("BallShooterHighSpeed", 1.0);
+    	SmartDashboard.putNumber("BallShooterLowSpeed", 0.5);
     	SmartDashboard.putNumber("IntakeSpeed", 0.5);
     	SmartDashboard.putNumber("IntakeReverseSpeed", -0.5);
-    	SmartDashboard.putNumber("climbingSpeed", 0.2);
+    	SmartDashboard.putNumber("ClimbingSpeed", 0.2);
 	}
 
 	public static  SpeedController driveMotorLeft;

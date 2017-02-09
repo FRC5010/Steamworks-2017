@@ -14,7 +14,7 @@ public class Climber extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	public void startClimbing() {
-		double motorSpeed=SmartDashboard.getNumber("climbingSpeed", 0.2);
+		double motorSpeed=SmartDashboard.getNumber("ClimbingSpeed", 0.2);
 		RobotMap.climbMotor.set(motorSpeed);
 	}
 	

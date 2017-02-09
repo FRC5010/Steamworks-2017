@@ -27,7 +27,7 @@ public class BallShooter extends Subsystem {
      * Function to shoot the ball high.
      */
     public void shootBallHigh() {
-    	double shootSpeed = SmartDashboard.getNumber("ballShooterHighSpeed", 1.0);
+    	double shootSpeed = SmartDashboard.getNumber("BallShooterHighSpeed", 1.0);
     	RobotMap.shootMotor.set(shootSpeed);
     }
     
@@ -35,7 +35,7 @@ public class BallShooter extends Subsystem {
      * Function to shoot the ball low.
      */
     public void shootBallLow() {
-    	double shootSpeed = SmartDashboard.getNumber("ballShooterLowSpeed", 0.5);
+    	double shootSpeed = SmartDashboard.getNumber("BallShooterLowSpeed", 0.5);
     	RobotMap.shootMotor.set(shootSpeed);
     }
 }
