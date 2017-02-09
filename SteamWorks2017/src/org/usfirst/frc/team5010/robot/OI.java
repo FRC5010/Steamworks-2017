@@ -2,13 +2,13 @@ package org.usfirst.frc.team5010.robot;
 
 import org.usfirst.frc.team5010.oi.JoystickAnalogButton;
 import org.usfirst.frc.team5010.robot.commands.Climb;
+import org.usfirst.frc.team5010.robot.commands.DriveForwardUntilDistance;
 import org.usfirst.frc.team5010.robot.commands.EmptyBallIntake;
 import org.usfirst.frc.team5010.robot.commands.ExtendGearHolder;
 import org.usfirst.frc.team5010.robot.commands.LoadBallIntake;
 import org.usfirst.frc.team5010.robot.commands.RetractGearHolder;
 import org.usfirst.frc.team5010.robot.commands.ShootHighGoalBall;
 import org.usfirst.frc.team5010.robot.commands.ShootLowGoalBall;
-import org.usfirst.frc.team5010.robot.commands.SwitchDriveMode;
 import org.usfirst.frc.team5010.robot.commands.VisionStart;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -68,7 +68,7 @@ public class OI {
 	 * Default constructor.
 	 */
 	public OI () {
-		buttonB.whenReleased(new SwitchDriveMode());
+		buttonB.whenReleased(new DriveForwardUntilDistance());
 	
 		buttonStart.whenPressed(new ExtendGearHolder());
 		buttonBack.whenPressed(new RetractGearHolder());

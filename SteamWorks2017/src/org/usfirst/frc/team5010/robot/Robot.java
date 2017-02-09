@@ -39,8 +39,8 @@ public class Robot extends IterativeRobot {
 		//chooser.addObject("My Auto", new TurnToAngle());
 		SmartDashboard.putData("Auto mode", chooser);
 		
-		RobotMap.vision.startFrontVision();
-		RobotMap.vision.startRearVision();
+		//RobotMap.vision.startFrontVision();
+		//RobotMap.vision.startRearVision();
 	}
 
 	/**
