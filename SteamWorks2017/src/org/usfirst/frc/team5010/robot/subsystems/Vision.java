@@ -33,7 +33,7 @@ public class Vision extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	public Vision() {
-		RobotMap.camera = CameraServer.getInstance();
+		//RobotMap.camera = CameraServer.getInstance();
 	}
 
 	public void startFrontVision() {

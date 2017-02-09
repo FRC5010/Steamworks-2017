@@ -1,6 +1,8 @@
 package org.usfirst.frc.team5010.robot.commands;
 
 import org.usfirst.frc.team5010.robot.Robot;
+import org.usfirst.frc.team5010.robot.RobotMap;
+import org.usfirst.frc.team5010.robot.subsystems.Vision;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -20,6 +22,8 @@ public class SwitchDriveMode extends Command {
     		Scheduler.getInstance().add(new TankDriveReverse());
     	}else{
     		Scheduler.getInstance().add(new TankDriveForward());
+
+    		
     	}
     }
 
