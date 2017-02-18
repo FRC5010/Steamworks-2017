@@ -11,19 +11,28 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Climber extends Subsystem {
 
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
-	public void startClimbing() {
-		double motorSpeed=SmartDashboard.getNumber("climbingSpeed", 0.2);
-		RobotMap.climbMotor.set(motorSpeed);
-	}
-	public void stop() {
-		RobotMap.climbMotor.set(0.0);
+	/**
+	 * Default constructor.
+	 */
+	public Climber()
+	{
+		
 	}
 	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
-}
 
+    // Put methods for controlling this subsystem
+    // here. Call these from Commands.
+	public void startClimbing() {
+		double motorSpeed=SmartDashboard.getNumber("climbingSpeed", 0.2);
+		RobotMap.climbMotor.set(motorSpeed);
+	}
+	
+	public void stop() {
+		RobotMap.climbMotor.set(0.0);
+	}
+	
+}

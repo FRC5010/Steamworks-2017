@@ -13,29 +13,30 @@ public class BallShooter extends Subsystem {
 	/**
 	 * Default constructor.
 	 */
-	public BallShooter() {
-	}
+    public BallShooter()
+    {
+    }
 
-	public void initDefaultCommand() {
-		// Set the default command for a subsystem here.
-		// setDefaultCommand(new MySpecialCommand());
-	}
-
-	/**
-	 * Function to shoot the ball high.
-	 */
-	public void shootBallHigh() {
-		double shootSpeed = SmartDashboard.getNumber("ballShooterHighSpeed", 1.0);
-		RobotMap.shootMotor.set(-shootSpeed);
-	}
-
-	/**
-	 * Function to shoot the ball low.
-	 */
-	public void shootBallLow() {
-		double shootSpeed = SmartDashboard.getNumber("ballShooterLowSpeed", 0.5);
-		RobotMap.shootMotor.set(-shootSpeed);
-	}
+    public void initDefaultCommand() {
+        // Set the default command for a subsystem here.
+        //setDefaultCommand(new MySpecialCommand());
+    }
+    
+    /**
+     * Function to shoot the ball high.
+     */
+    public void shootBallHigh() {
+    	double shootSpeed = SmartDashboard.getNumber("BallShooterHighSpeed", 1.0);
+    	RobotMap.shootMotor.set(-shootSpeed);
+    }
+    
+    /**
+     * Function to shoot the ball low.
+     */
+    public void shootBallLow() {
+    	double shootSpeed = SmartDashboard.getNumber("BallShooterLowSpeed", 0.5);
+    	RobotMap.shootMotor.set(-shootSpeed);
+    }
 
 	public void stop() {
 		RobotMap.shootMotor.set(0.0);
