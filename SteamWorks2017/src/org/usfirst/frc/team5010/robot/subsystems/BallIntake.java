@@ -25,7 +25,7 @@ public class BallIntake extends Subsystem {
     }
     
     public void gatherBallToTank() {
-    	double motorSpeed=SmartDashboard.getNumber("IntakeSpeed", 0.5);
+    	double motorSpeed=SmartDashboard.getNumber("IntakeSpeed", 1);
     	RobotMap.intakeMotor.set(motorSpeed);
     
     	//uncomment following 2 lines if we use triggers

@@ -16,6 +16,7 @@ public class TankDriveForward extends Command {
     
 	public TankDriveForward() {
     	requires(RobotMap.drivetrain);
+    	requires(RobotMap.distanceSensor);
     	requires(RobotMap.range);
 
         // Use requires() here to declare subsystem dependencies
@@ -27,6 +28,7 @@ public class TankDriveForward extends Command {
     	Robot.forwardOrReverse = true;
 //    	RobotMap.vision.stopRearVision();
 //    	RobotMap.vision.startFrontVision();
+    	RobotMap.distanceSensor.reset();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -36,6 +38,7 @@ public class TankDriveForward extends Command {
     	
     	RobotMap.drivetrain.drive(leftInputPower, rightInputPower);
     	SmartDashboard.putNumber("distance", RobotMap.range.getDistance());
+    	SmartDashboard.putNumber("encoder", RobotMap.distanceSensor.getDistance());
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -46,7 +49,7 @@ public class TankDriveForward extends Command {
     // Called once after isFinished returns true
     protected void end() {
     	RobotMap.drivetrain.drive(0,0);
-//    	RobotMap.vision.stopFrontVision();
+    	RobotMap.vision.stopFrontVision();
     }
 
     // Called when another command which requires one or more of the same

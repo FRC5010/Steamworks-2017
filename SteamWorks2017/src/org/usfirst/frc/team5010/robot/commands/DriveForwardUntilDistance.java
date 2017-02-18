@@ -28,7 +28,7 @@ public class DriveForwardUntilDistance extends PIDCommand {
         requires(RobotMap.direction);
         requires(RobotMap.range);
         getPIDController().setInputRange(10, 200);
-        getPIDController().setOutputRange(-0.2, 0.2);
+        getPIDController().setOutputRange(-0.25, 0.25);
        
     }
     public void setPoint(double setPoint) {
@@ -37,9 +37,9 @@ public class DriveForwardUntilDistance extends PIDCommand {
 
 	// Called just before this Command runs the first time
     protected void initialize() {
-    	getPIDController().setPID(SmartDashboard.getNumber("P", 0.12), SmartDashboard.getNumber("I", 0.04), SmartDashboard.getNumber("D", 0.04));
-    	setPoint(SmartDashboard.getNumber("Setpoint", 20));
-        //SmartDashboard.putNumber("Setpoint", getSetpoint());   
+    	//getPIDController().setPID(SmartDashboard.getNumber("P", 0.12), SmartDashboard.getNumber("I", 0.04), SmartDashboard.getNumber("D", 0.04));
+    	//setPoint(SmartDashboard.getNumber("Setpoint", 20));
+//        SmartDashboard.putNumber("Setpoint", getSetpoint());   
         getPIDController().setAbsoluteTolerance(tolerance);
         getPIDController().setToleranceBuffer(toleranceBuffer);
     	startAngle = RobotMap.direction.angle();
@@ -59,8 +59,9 @@ public class DriveForwardUntilDistance extends PIDCommand {
 
     // Called once after isFinished returns true
     protected void end() {
-    	RobotMap.drivetrain.stop();
     	getPIDController().reset();
+    	RobotMap.drivetrain.stop();
+    
     }
 
     // Called when another command which requires one or more of the same
@@ -71,9 +72,9 @@ public class DriveForwardUntilDistance extends PIDCommand {
 
 	@Override
 	protected double returnPIDInput() {
-		double distance = RobotMap.range.getDistance();
-    	SmartDashboard.putNumber("distance", distance);
-		return distance;
+		double range = RobotMap.range.getDistance();
+    	SmartDashboard.putNumber("range", range);
+		return range;
 	}
 
 	@Override

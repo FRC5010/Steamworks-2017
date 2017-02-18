@@ -32,11 +32,11 @@ public class EmptyBallIntake extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if (Robot.oi.joyCoDriver.getRawAxis(2) == 0.0)
+    	if (Robot.oi.joyCoDriver.getRawButton(1))
     	{
-    		return true;
+    		return false;
     	}
-        return false;
+        return true;
     }
 
     // Called once after isFinished returns true
@@ -47,5 +47,6 @@ public class EmptyBallIntake extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	end();
     }
 }

@@ -24,10 +24,9 @@ public class RangeSensor extends Subsystem {
     }
     
     public double getDistance() {
+    	double value = ultrasound.getValue() / 8.14;
     	SmartDashboard.putNumber("value", ultrasound.getValue());
-    	double value = ultrasound.getValue();
-    	// 10 inches = 230. 60 inches = 1200.
-    	return (value - 230) / 970.0 * 50 + 10;
+    	return value;
     }
 }
 

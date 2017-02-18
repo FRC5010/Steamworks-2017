@@ -1,7 +1,8 @@
 
 package org.usfirst.frc.team5010.robot;
 
-import org.usfirst.frc.team5010.robot.commands.AutonCommand1;
+import org.usfirst.frc.team5010.robot.commands.RightPegAuton;
+
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -25,7 +26,7 @@ public class Robot extends IterativeRobot {
 
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
-
+	
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
@@ -35,12 +36,14 @@ public class Robot extends IterativeRobot {
 		RobotMap.init();
 		RobotMap.smartDashboard();
 		oi = new OI();
-		chooser.addDefault("Default Auto", new AutonCommand1());
-		//chooser.addObject("My Auto", new TurnToAngle());
+		//chooser.addDefault("center peg", new CenterPegAuton());
+		chooser.addObject("left peg", new RightPegAuton());
 		SmartDashboard.putData("Auto mode", chooser);
 		
-		//RobotMap.vision.startFrontVision();
-		//RobotMap.vision.startRearVision();
+		
+		RobotMap.vision.startFrontVision();
+		RobotMap.vision.startRearVision();
+		RobotMap.distanceSensor.reset();
 	}
 
 	/**
@@ -71,7 +74,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		autonomousCommand = new AutonCommand1();//chooser.getSelected();
+		autonomousCommand = chooser.getSelected();
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
 		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand

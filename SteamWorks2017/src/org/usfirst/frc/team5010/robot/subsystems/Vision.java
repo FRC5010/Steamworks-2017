@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import org.opencv.core.MatOfPoint;
 import org.opencv.core.Rect;
 import org.opencv.imgproc.Imgproc;
-import org.usfirst.frc.team5010.robot.GripPipelinepeg;
+import org.usfirst.frc.team5010.robot.GripPipeline;
 import org.usfirst.frc.team5010.robot.RobotMap;
 
 import edu.wpi.cscore.UsbCamera;
@@ -29,9 +29,9 @@ public class Vision extends Subsystem {
 	private VisionThread visionThread;
 	private final Object imgLock = new Object();
 	private double centerX = 0.0;
-
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
+//
+//    // Put methods for controlling this subsystem
+//    // here. Call these from Commands.
 	public Vision() {
 		//RobotMap.camera = CameraServer.getInstance();
 	}
@@ -39,20 +39,21 @@ public class Vision extends Subsystem {
 	public void startFrontVision() {
 		if (null == camera0) {
 			camera0 = RobotMap.camera.startAutomaticCapture(FRONT_CAMERA, 0);
-			camera0.setResolution(320, 240);
-			camera0.setFPS(15);
+//			camera0.setResolution(320, 240);
+//			camera0.setFPS(15);
 		}
 		RobotMap.camera.getVideo(FRONT_CAMERA).setEnabled(true);
 	}
 
-	public void startRearVision() {
+	public void startRearVision() {		
 		if (null == camera1) {
-			camera1 = RobotMap.camera.startAutomaticCapture(REAR_CAMERA, 1);
-			camera1.setResolution(160, 120);
-			camera1.setFPS(10);
-		}
-		RobotMap.camera.getVideo(REAR_CAMERA).setEnabled(true);
 	}
+			camera1 = RobotMap.camera.startAutomaticCapture(REAR_CAMERA, 1);
+//			camera1.setResolution(160, 120);
+//			camera1.setFPS(10);
+		}
+		//RobotMap.camera.getVideo(REAR_CAMERA).setEnabled(true);
+	
 
 	public void stopFrontVision() {
 		if (null != RobotMap.camera) {
@@ -61,9 +62,9 @@ public class Vision extends Subsystem {
 	}
 
 	public void stopRearVision() {
-		if (null != RobotMap.camera) {
-			RobotMap.camera.getVideo(REAR_CAMERA).setEnabled(false);
-		}
+	//if (null != RobotMap.camera) {
+////			RobotMap.camera.getVideo(REAR_CAMERA).setEnabled(false);
+////		}
 	}
 
 	public double getX() {
@@ -78,7 +79,7 @@ public class Vision extends Subsystem {
 		SmartDashboard.putNumber("centerX", 0);
 		System.out.println("Why isn't this working!");
 		// GripPipelinepeg needs to implement VisionPipeline (GripPipelinepeg implements VisionPipeline)
-		visionThread = new VisionThread(camera0, new GripPipelinepeg(), pipeline -> {
+		visionThread = new VisionThread(camera0, new GripPipeline(), pipeline -> {
 			if (!pipeline.filterContoursOutput().isEmpty()) {
 				// Write a function that takes an ArrayList<MatOfPoint> and processes the screen objects
 				processScreenContours(pipeline.filterContoursOutput());
@@ -90,11 +91,11 @@ public class Vision extends Subsystem {
 	private void processScreenContours(ArrayList<MatOfPoint> contourList) {
 		double localX;
 		
-		// This function will loop over the list and pick out the 2 target contours
-		// It will then store information for a vision targeting command which can be used to drive the robot
+//		// This function will loop over the list and pick out the 2 target contours
+//		// It will then store information for a vision targeting command which can be used to drive the robot
 		// That information should also be output to the smart dashboard for operator targeting
 		Rect r = Imgproc.boundingRect(contourList.get(0));
-		synchronized (imgLock) {
+    	synchronized (imgLock) {
 			centerX = r.x + (r.width / 2);
 			localX = centerX;
 		}
@@ -106,8 +107,10 @@ public class Vision extends Subsystem {
 		visionThread.stop();
 	}
 
-	public void initDefaultCommand() {
+		public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
 		// setDefaultCommand(new MySpecialCommand());
-	}
+		}
 }
+
+

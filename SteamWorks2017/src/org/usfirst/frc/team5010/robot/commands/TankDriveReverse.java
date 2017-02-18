@@ -25,8 +25,8 @@ public class TankDriveReverse extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	Robot.forwardOrReverse = false;
-    	RobotMap.vision.stopFrontVision();
-    	RobotMap.vision.startRearVision();
+//    	RobotMap.vision.stopFrontVision();
+//    	RobotMap.vision.startRearVision();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -46,7 +46,7 @@ public class TankDriveReverse extends Command {
     // Called once after isFinished returns true
     protected void end() {
     	RobotMap.drivetrain.drive(0,0);
- //   	RobotMap.vision.stopRearVision();
+    	RobotMap.vision.stopRearVision();
     }
 
     // Called when another command which requires one or more of the same

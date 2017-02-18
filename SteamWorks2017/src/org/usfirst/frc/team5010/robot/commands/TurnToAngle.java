@@ -25,7 +25,7 @@ public class TurnToAngle extends PIDCommand {
         requires(RobotMap.direction);
         getPIDController().setAbsoluteTolerance(tolerance);
         getPIDController().setToleranceBuffer(toleranceBuffer);
-        getPIDController().setOutputRange(-0.5, 0.5);
+        getPIDController().setOutputRange(-0.2, 0.2);
         getPIDController().setInputRange(-360, 361);   
     }
     
@@ -37,7 +37,7 @@ public class TurnToAngle extends PIDCommand {
     // Called just before this Command runs the first time
     protected void initialize() {
     	RobotMap.direction.reset();
-    	setSetpoint(SmartDashboard.getNumber("Final Angle", 0));
+    	
     	getPIDController().setAbsoluteTolerance(tolerance);
         getPIDController().setToleranceBuffer(toleranceBuffer);
     	getPIDController().setPID(SmartDashboard.getNumber("P", 0.01), SmartDashboard.getNumber("I", 0), SmartDashboard.getNumber("D", 0));

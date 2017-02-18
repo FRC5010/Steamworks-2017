@@ -1,9 +1,11 @@
 package org.usfirst.frc.team5010.robot;
 
+import org.usfirst.frc.team5010.robot.subsystems.Agitator;
 import org.usfirst.frc.team5010.robot.subsystems.BallIntake;
 import org.usfirst.frc.team5010.robot.subsystems.BallShooter;
 import org.usfirst.frc.team5010.robot.subsystems.Climber;
 import org.usfirst.frc.team5010.robot.subsystems.DirectionSensor;
+import org.usfirst.frc.team5010.robot.subsystems.DistanceSensor;
 import org.usfirst.frc.team5010.robot.subsystems.DriveTrainMain;
 import org.usfirst.frc.team5010.robot.subsystems.GearHolder;
 import org.usfirst.frc.team5010.robot.subsystems.RangeSensor;
@@ -14,6 +16,7 @@ import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
@@ -36,13 +39,15 @@ public class RobotMap {
 		SmartDashboard.putString("Tolerance Buffer", "5");
 		SmartDashboard.putNumber("final distance", 15);
 		SmartDashboard.putNumber("angle", 0);
-		SmartDashboard.putNumber("distance per pulse", 1.5 * Math.PI);
+		SmartDashboard.putNumber("distance per pulse", 4.7);
 		SmartDashboard.putNumber("Distance", ultrasound.getVoltage());
     	SmartDashboard.putNumber("ballShooterHighSpeed", 1.0);
     	SmartDashboard.putNumber("ballShooterLowSpeed", 0.5);
     	SmartDashboard.putNumber("IntakeSpeed", 0.5);
     	SmartDashboard.putNumber("IntakeReverseSpeed", -0.5);
-    	SmartDashboard.putNumber("climbingSpeed", 0.2);
+    	SmartDashboard.putNumber("climbingSpeed", 0.3);
+    	SmartDashboard.putNumber("agitator time", 500);
+    	SmartDashboard.putNumber("distance from wall for side autons", 0);
 	}
 
 	public static  SpeedController driveMotorLeft;
@@ -66,12 +71,16 @@ public class RobotMap {
 	public static  RangeSensor range;
 	public static  Vision vision;
 	public static BallShooter ballshooter;
+	public static DistanceSensor distanceSensor;
 	
 	public static Climber climber;
 	
+	public static Spark agitatorMotor;
+	public static Agitator agitator;
+	
 	public static void init() {
-		driveMotorLeft = new Spark(1);
-		driveMotorRight = new Spark(0);
+		driveMotorLeft = new Spark(0);
+		driveMotorRight = new Spark(1);
 		intakeMotor = new Spark(4);
 		shootMotor = new Spark(3);
 		climbMotor=new Spark(2);
@@ -79,10 +88,11 @@ public class RobotMap {
 		gyro = new ADXRS450_Gyro();
 		ultrasound = new AnalogInput(0);
 		solenoid = new DoubleSolenoid(0, 1);
+		agitatorMotor = new Spark(5);
 
 		rightEncoder = new Encoder(0, 1);
 		leftEncoder = new Encoder(2, 3);
-		//camera = CameraServer.getInstance(); 
+		camera = CameraServer.getInstance(); 
 		drivetrain = new DriveTrainMain();
 		gearHolder = new GearHolder();
 		ballIntake = new BallIntake();
@@ -90,6 +100,10 @@ public class RobotMap {
 		range = new RangeSensor();
 		vision = new Vision();
 		ballshooter = new BallShooter(); 
-		climber=new Climber();
+		climber= new Climber();
+		distanceSensor = new DistanceSensor();
+		agitator = new Agitator();
+		
+		
 	}
 }

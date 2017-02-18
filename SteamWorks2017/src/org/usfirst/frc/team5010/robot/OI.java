@@ -1,14 +1,15 @@
 package org.usfirst.frc.team5010.robot;
 
 import org.usfirst.frc.team5010.oi.JoystickAnalogButton;
+import org.usfirst.frc.team5010.robot.commands.RunAgitator;
 import org.usfirst.frc.team5010.robot.commands.Climb;
-import org.usfirst.frc.team5010.robot.commands.DriveForwardUntilDistance;
 import org.usfirst.frc.team5010.robot.commands.EmptyBallIntake;
 import org.usfirst.frc.team5010.robot.commands.ExtendGearHolder;
 import org.usfirst.frc.team5010.robot.commands.LoadBallIntake;
 import org.usfirst.frc.team5010.robot.commands.RetractGearHolder;
 import org.usfirst.frc.team5010.robot.commands.ShootHighGoalBall;
 import org.usfirst.frc.team5010.robot.commands.ShootLowGoalBall;
+import org.usfirst.frc.team5010.robot.commands.SwitchDriveMode;
 import org.usfirst.frc.team5010.robot.commands.VisionStart;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -63,17 +64,19 @@ public class OI {
 	private JoystickAnalogButton leftCoDTrigger = new JoystickAnalogButton(joyCoDriver, 2);
 	private JoystickAnalogButton rightCoDTrigger = new JoystickAnalogButton(joyCoDriver, 3);
 	private Button buttonY = new JoystickButton(joyDriver, 4);
+	private Button buttonX = new JoystickButton(joyDriver, 3);
 	
 	/**
 	 * Default constructor.
 	 */
 	public OI () {
-		buttonB.whenReleased(new DriveForwardUntilDistance());
+		buttonB.whenPressed(new RunAgitator());
+		buttonA.whenPressed(new SwitchDriveMode());
 	
-		buttonStart.whenPressed(new ExtendGearHolder());
-		buttonBack.whenPressed(new RetractGearHolder());
+		buttonY.whenPressed(new ExtendGearHolder());
+		buttonX.whenPressed(new RetractGearHolder());
 		
-		buttonY.whenPressed(new VisionStart());
+		buttonStart.whenPressed(new VisionStart());
 
 		buttonCoDX.whenPressed(new ShootLowGoalBall());
 		buttonCoDY.whenPressed(new ShootHighGoalBall());
