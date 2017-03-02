@@ -13,12 +13,16 @@ import edu.wpi.first.wpilibj.command.Command;
 public class Climb extends Command {
 
 	private Climber littleClimber;
+	double speed;
+	int button;
 	
-    public Climb() {
+    public Climb(double speed, int button) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(RobotMap.climber);
     	littleClimber=RobotMap.climber;
+    	this.speed = speed;
+    	this.button = button;
     }
 
     // Called just before this Command runs the first time
@@ -27,12 +31,12 @@ public class Climb extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	littleClimber.startClimbing();
+    	littleClimber.startClimbing(speed);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        if(Robot.oi.joyDriver.getRawButton(5)) {
+        if(Robot.oi.joyDriver.getRawButton(button)) {
         	return false;
         }
         else {

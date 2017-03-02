@@ -1,7 +1,9 @@
 
 package org.usfirst.frc.team5010.robot;
 
-import org.usfirst.frc.team5010.robot.commands.RightPegAuton;
+import org.usfirst.frc.team5010.robot.commands.CenterPegAuton;
+import org.usfirst.frc.team5010.robot.commands.LeftPegAutonRed;
+import org.usfirst.frc.team5010.robot.commands.RightPegAutonRed;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -18,9 +20,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * directory.
  */
 public class Robot extends IterativeRobot {
-	//TODO Uncomment below line when encoder available.
-	//public static final Encoders encoder = new Encoders();
-
+	
 	public static OI oi;
 	public static boolean forwardOrReverse = true;
 
@@ -37,8 +37,10 @@ public class Robot extends IterativeRobot {
 		RobotMap.smartDashboard();
 		oi = new OI();
 		//chooser.addDefault("center peg", new CenterPegAuton());
-		chooser.addObject("left peg", new RightPegAuton());
-		SmartDashboard.putData("Auto mode", chooser);
+		chooser.addObject("left peg", new LeftPegAutonRed());
+		chooser.addObject("center peg", new CenterPegAuton());
+		chooser.addDefault("right peg", new RightPegAutonRed());
+		SmartDashboard.putData("Auton mode", chooser);
 		
 		
 		RobotMap.vision.startFrontVision();
@@ -83,8 +85,9 @@ public class Robot extends IterativeRobot {
 		 */
 
 		// schedule the autonomous command (example)
-		if (autonomousCommand != null)
+		if (autonomousCommand != null){
 			autonomousCommand.start();
+		}
 	}
 
 	/**
@@ -101,8 +104,9 @@ public class Robot extends IterativeRobot {
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
-		if (autonomousCommand != null)
+		if (autonomousCommand != null){
 			autonomousCommand.cancel();
+		}
 	}
 
 	/**

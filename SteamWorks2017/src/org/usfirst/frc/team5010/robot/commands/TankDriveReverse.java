@@ -34,7 +34,7 @@ public class TankDriveReverse extends Command {
     	leftInputPower = Robot.oi.joyDriver.getRawAxis(1);
     	rightInputPower = Robot.oi.joyDriver.getRawAxis(5);
     	
-    	RobotMap.drivetrain.drive(-rightInputPower, -leftInputPower);
+    	RobotMap.drivetrain.drive(leftInputPower *.8, rightInputPower * .8);
     	SmartDashboard.putNumber("distance", RobotMap.range.getDistance());
     }
 

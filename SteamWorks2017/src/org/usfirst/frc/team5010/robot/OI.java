@@ -1,12 +1,13 @@
 package org.usfirst.frc.team5010.robot;
 
 import org.usfirst.frc.team5010.oi.JoystickAnalogButton;
-import org.usfirst.frc.team5010.robot.commands.RunAgitator;
+import org.usfirst.frc.team5010.robot.commands.CenterPegAuton;
 import org.usfirst.frc.team5010.robot.commands.Climb;
 import org.usfirst.frc.team5010.robot.commands.EmptyBallIntake;
 import org.usfirst.frc.team5010.robot.commands.ExtendGearHolder;
 import org.usfirst.frc.team5010.robot.commands.LoadBallIntake;
 import org.usfirst.frc.team5010.robot.commands.RetractGearHolder;
+import org.usfirst.frc.team5010.robot.commands.RunAgitator;
 import org.usfirst.frc.team5010.robot.commands.ShootHighGoalBall;
 import org.usfirst.frc.team5010.robot.commands.ShootLowGoalBall;
 import org.usfirst.frc.team5010.robot.commands.SwitchDriveMode;
@@ -76,6 +77,8 @@ public class OI {
 		buttonY.whenPressed(new ExtendGearHolder());
 		buttonX.whenPressed(new RetractGearHolder());
 		
+		
+		
 		buttonStart.whenPressed(new VisionStart());
 
 		buttonCoDX.whenPressed(new ShootLowGoalBall());
@@ -87,7 +90,8 @@ public class OI {
 		//rightCoDTrigger.whenPressed(new LoadBallIntake());
 		//leftCoDTrigger.whenPressed(new EmptyBallIntake());
 		
-		buttonLB.whenPressed(new Climb());
+		buttonLB.whenPressed(new Climb(-0.3,5));
+		buttonRB.whenPressed(new Climb(-0.75,6));
 		
 		
 	}

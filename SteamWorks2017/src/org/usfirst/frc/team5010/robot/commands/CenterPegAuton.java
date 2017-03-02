@@ -13,15 +13,15 @@ public class CenterPegAuton extends CommandGroup {
     	RobotMap.direction.reset();
     	//can't have same command repeated.
     	DriveForwardUntilDistance step1 = new DriveForwardUntilDistance();
-    	step1.setPoint(15);
+    	step1.setPoint(8);
     	DriveForwardUntilDistance driveBack = new DriveForwardUntilDistance();
-    	driveBack.setPoint(50);
+    	driveBack.setPoint(20);
     	
     	
     	addSequential(step1);
-//    	addSequential(new ExtendGearHolder());
-//    	addSequential(driveBack);
-//    	addSequential(new RetractGearHolder());
-//    	
+    	addSequential(new ExtendGearHolder());
+    	addSequential(driveBack);
+    	addSequential(new RetractGearHolder());
+    	
     }
 }

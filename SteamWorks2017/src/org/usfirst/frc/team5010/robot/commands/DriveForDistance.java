@@ -20,7 +20,7 @@ public class DriveForDistance extends PIDCommand {
 	
 
     public DriveForDistance() {
-    	super("DriveForwardUntilDistance", p, i, d);
+    	super("DriveForDistance", p, i, d);
     	SmartDashboard.putNumber("P", p); 
     	SmartDashboard.putNumber("I", i);
     	SmartDashboard.putNumber("D", d);
@@ -29,7 +29,7 @@ public class DriveForDistance extends PIDCommand {
         requires(RobotMap.direction);
         requires(RobotMap.distanceSensor);
         getPIDController().setInputRange(0, 200);
-        getPIDController().setOutputRange(-0.25, 0.25);
+        getPIDController().setOutputRange(-0.4, 0.4);
     }
     public void setPoint(double setPoint) {
     	setSetpoint(setPoint);
@@ -59,6 +59,7 @@ public class DriveForDistance extends PIDCommand {
 
     // Called once after isFinished returns true
     protected void end() {
+    	getPIDController().reset();
     	RobotMap.drivetrain.stop();
     
     }
@@ -81,8 +82,8 @@ public class DriveForDistance extends PIDCommand {
 	protected void usePIDOutput(double output) {
 		output = -output;
 		SmartDashboard.putNumber("output", output);
-			double leftOutput = output - ((startAngle - currentAngle) / 180);
-			double rightOutput = output + ((startAngle - currentAngle) / 180);
-			RobotMap.drivetrain.drive(leftOutput, rightOutput);		
+		double leftOutput = output - ((startAngle - currentAngle) / 180);
+		double rightOutput = output + ((startAngle - currentAngle) / 180);
+		RobotMap.drivetrain.drive(leftOutput, rightOutput);		
 	}
 }

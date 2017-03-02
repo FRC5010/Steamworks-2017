@@ -25,7 +25,7 @@ public class TurnToAngle extends PIDCommand {
         requires(RobotMap.direction);
         getPIDController().setAbsoluteTolerance(tolerance);
         getPIDController().setToleranceBuffer(toleranceBuffer);
-        getPIDController().setOutputRange(-0.2, 0.2);
+        getPIDController().setOutputRange(-0.225, 0.225);
         getPIDController().setInputRange(-360, 361);   
     }
     

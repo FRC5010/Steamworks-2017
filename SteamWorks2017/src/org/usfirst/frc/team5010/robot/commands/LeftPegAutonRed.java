@@ -1,20 +1,22 @@
 package org.usfirst.frc.team5010.robot.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
  */
-public class LeftPegAuton extends CommandGroup {
+public class LeftPegAutonRed extends CommandGroup {
 
-	public LeftPegAuton() {
-		double Distance = SmartDashboard.getNumber("distance from wall for side autons", 0);
+	public LeftPegAutonRed() {
+		//double Distance = SmartDashboard.getNumber("distance from wall for side autons", 0);
 		
-		
+		// Boiler width = 30 inches
+		// Load station width = 53 inches
+		// Robot placement 65 inches to relative edge
+		// 35 inches from boiler and 12 inches from load station
 		
 		DriveForDistance step1 = new DriveForDistance();
-		step1.setPoint(Math.tan(30 * 180/Math.PI) * (151 - Distance) + (56 - (15.5)));
+		step1.setPoint(81);
 		TurnToAngle step2 = new TurnToAngle();
 		step2.setPoint(60);
 		DriveForwardUntilDistance driveForward = new DriveForwardUntilDistance();
@@ -32,3 +34,5 @@ public class LeftPegAuton extends CommandGroup {
 		addSequential(new RetractGearHolder());
 	}
 }
+//
+
