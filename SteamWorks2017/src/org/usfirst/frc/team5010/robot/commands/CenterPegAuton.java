@@ -25,3 +25,6 @@ public class CenterPegAuton extends CommandGroup {
     	
     }
 }
+
+//what're you lookin at?'
+//nuttin', you wanna fight?
