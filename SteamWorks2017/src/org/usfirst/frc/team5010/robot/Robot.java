@@ -6,6 +6,7 @@ import org.usfirst.frc.team5010.robot.commands.LeftPegAutonRed;
 import org.usfirst.frc.team5010.robot.commands.RightPegAutonRed;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -23,6 +24,7 @@ public class Robot extends IterativeRobot {
 	
 	public static OI oi;
 	public static boolean forwardOrReverse = true;
+	public PowerDistributionPanel pdp;
 
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
@@ -46,6 +48,8 @@ public class Robot extends IterativeRobot {
 		RobotMap.vision.startFrontVision();
 		RobotMap.vision.startRearVision();
 		RobotMap.distanceSensor.reset();
+		
+		pdp = new PowerDistributionPanel();
 	}
 
 	/**
@@ -115,6 +119,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+		SmartDashboard.putNumber("Climber Current", pdp.getCurrent(14));
 		
 	}
 

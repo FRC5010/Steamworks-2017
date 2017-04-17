@@ -1,9 +1,8 @@
 package org.usfirst.frc.team5010.robot;
 
 import org.usfirst.frc.team5010.oi.JoystickAnalogButton;
-import org.usfirst.frc.team5010.robot.commands.CenterPegAuton;
 import org.usfirst.frc.team5010.robot.commands.Climb;
-import org.usfirst.frc.team5010.robot.commands.DriveForwardUntilDistance;
+import org.usfirst.frc.team5010.robot.commands.DriveBack;
 import org.usfirst.frc.team5010.robot.commands.EmptyBallIntake;
 import org.usfirst.frc.team5010.robot.commands.ExtendGearHolder;
 import org.usfirst.frc.team5010.robot.commands.LoadBallIntake;
@@ -81,7 +80,7 @@ public class OI {
 		
 		
 		buttonStart.whenPressed(new VisionStart());
-		buttonBack.whenPressed(new DriveForwardUntilDistance(20));
+		buttonBack.whenPressed(new DriveBack());
 
 		buttonCoDX.whenPressed(new ShootLowGoalBall());
 		buttonCoDY.whenPressed(new ShootHighGoalBall());
@@ -93,7 +92,7 @@ public class OI {
 		//leftCoDTrigger.whenPressed(new EmptyBallIntake());
 		
 		buttonLB.whenPressed(new Climb(-0.3,5));
-		buttonRB.whenPressed(new Climb(-0.75,6));
+		buttonRB.whenPressed(new Climb(-1.0,6));
 		
 		
 	}

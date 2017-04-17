@@ -10,7 +10,6 @@ import org.usfirst.frc.team5010.robot.GripPipeline;
 import org.usfirst.frc.team5010.robot.RobotMap;
 
 import edu.wpi.cscore.UsbCamera;
-import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.vision.VisionThread;
